@@ -66,7 +66,6 @@ function App() {
       </div>
       <div className="container">
         <div className={`input-container ${fileSelected ? 'highlighted' : ''}`}>
-          <h1>Theft Scanner</h1>
           <PhotoCapture setOcrText={setOcrText} setCaptionText={setCaptionText} />
           <FileUpload setOcrText={handleSetOcrText} handleFileSelect={handleFileSelect} />
           {/* Add static content */}
@@ -74,7 +73,6 @@ function App() {
         <div className={`results-container ${hasData ? 'shown' : 'hidden'}`}>
           {ocrText && (
             <div>
-              <h2>Extracted Text:</h2>
               <pre>{ocrText}</pre>
               {/* Add button to play audio */}
                             <div>
