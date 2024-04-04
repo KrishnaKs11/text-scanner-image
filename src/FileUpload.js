@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import OCRService from './ocrservice';
+import './FileUpload.css';
 
 const FileUpload = ({ setOcrText }) => {
     const [selectedFile, setSelectedFile] = useState(null);
@@ -42,12 +43,15 @@ const FileUpload = ({ setOcrText }) => {
     };
 
     return (
-        <div>
-            <input type="file" accept="image/*" onChange={handleFileChange} />
-            <button onClick={handleUploadAndScan} disabled={!selectedFile || loading}>
-                {loading ? 'Scanning...' : 'Upload & Scan'}
-            </button>
-        </div>
+        <div className="file-upload-container">
+        <label htmlFor="file-upload" className="custom-file-upload">
+            Choose File
+        </label>
+        <input id="file-upload" type="file" accept="image/*" onChange={handleFileChange} />
+        <button onClick={handleUploadAndScan} disabled={!selectedFile || loading}>
+            {loading ? 'Scanning...' : 'Upload & Scan'}
+        </button>
+    </div>
     );
 };
 
