@@ -1,31 +1,29 @@
 import axios from 'axios';
 
 const OCRService = {
-    analyzeImage: async (imageBlob, setOcrText) => {
+    analyzeImage: async (imageData) => {
         const apiKey = 'fc3e1e21ada044039a8855e784b99c64';
-        const endpoint = 'https://textextractorforimg.cognitiveservices.azure.com/computervision/imageanalysis:analyze?features=caption,read&model-version=latest&language=en&api-version=2024-02-01';
+        const endpoint = 'https://textextractorforimg.cognitiveservices.azure.com/computervision/imageanalysis:analyze';
 
         try {
-            const response = await axios.post(endpoint, imageBlob, {
+            const response = await axios.post(endpoint, imageData, {
                 headers: {
                     'Ocp-Apim-Subscription-Key': apiKey,
                     'Content-Type': 'application/octet-stream'
                 },
                 params: {
-                    language: 'unk',
+                    features: 'caption,read',
+                    'model-version': 'latest',
+                    language: 'en',
+                    'api-version': '2024-02-01',
                     detectOrientation: 'true'
                 }
             });
 
-            const extractedText = response.data.readResult.blocks.map(block => block.lines.map(line => line.text).join('\n')).join('\n');
-
-            if (setOcrText) {
-                setOcrText(extractedText);
-            } else {
-                console.error('setOcrText function is not defined.');
-            }
+            return response.data;
         } catch (error) {
             console.error('OCR Analysis Error:', error);
+            throw error; // Rethrow the error to handle it in the component
         }
     }
 };

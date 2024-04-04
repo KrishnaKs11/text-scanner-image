@@ -6,6 +6,8 @@ const PhotoCapture = ({ setOcrText }) => {
     const videoRef = useRef(null);
     const [ocrText, setOcrTextState] = useState('');
     const [capturedImage, setCapturedImage] = useState(null);
+    const [caption, setCaption] = useState('');
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const startCamera = async () => {
@@ -36,62 +38,69 @@ const PhotoCapture = ({ setOcrText }) => {
             canvas.height = videoRef.current.videoHeight;
             const ctx = canvas.getContext('2d');
             ctx.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
-    
+
+            // Convert the canvas image to a Blob
             canvas.toBlob(blob => {
-                // Ensure content type is explicitly set to 'image/jpeg'
                 setCapturedImage(blob);
             }, 'image/jpeg', 0.95);
         }
     };
-    
+
     const handleCapture = () => {
         captureFrame();
     };
 
     const handleRetake = () => {
         setCapturedImage(null);
+        setOcrTextState('');
+        setCaption('');
     };
 
     const handleScan = async () => {
         if (capturedImage) {
+            setLoading(true);
             try {
                 const response = await OCRService.analyzeImage(capturedImage);
-                
-                // Check if response contains 'readResult'
-                if (response.data && response.data.readResult && response.data.readResult.blocks) {
-                    const extractedText = response.data.readResult.blocks
+
+                if (response.captionResult && response.captionResult.text) {
+                    setCaption(response.captionResult.text);
+                }
+
+                if (response.readResult && response.readResult.blocks) {
+                    const extractedText = response.readResult.blocks
                         .map(block => block.lines.map(line => line.text).join('\n'))
                         .join('\n');
-                    setOcrText(extractedText);
-                } else {
-                    console.error('OCR Analysis Error: Invalid response format');
+                    setOcrTextState(extractedText);
                 }
             } catch (error) {
                 console.error('OCR Analysis Error:', error);
+            } finally {
+                setLoading(false);
             }
         }
     };
-    
 
     return (
         <div className="photo-capture-container">
             <div className="video-wrapper">
                 <video ref={videoRef} autoPlay playsInline className="video-feed"></video>
                 {capturedImage && (
-                    <img src={capturedImage} alt="Captured" className="captured-image" />
+                    <img src={URL.createObjectURL(capturedImage)} alt="Captured" className="captured-image" />
                 )}
             </div>
             <div>
                 {capturedImage ? (
                     <div>
                         <button onClick={handleRetake}>Retake</button>
-                        <button onClick={handleScan}>Scan</button>
+                        <button onClick={handleScan} disabled={loading}>Scan</button>
                     </div>
                 ) : (
                     <button onClick={handleCapture}>Capture</button>
                 )}
             </div>
             <div>
+                <h2>Caption:</h2>
+                <pre>{caption}</pre>
                 <h2>Extracted Text:</h2>
                 <pre>{ocrText}</pre>
             </div>
