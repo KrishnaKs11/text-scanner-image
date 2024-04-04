@@ -4,6 +4,7 @@ import './App.css';
 import FileUpload from './FileUpload';
 import PhotoCapture from './PhotoCapture';
 import FeatureCards from './FeatureCards';
+import { FaPlay, FaCopy, FaDownload } from 'react-icons/fa';
 
 function App() {
   const [ocrText, setOcrText] = useState('');
@@ -22,6 +23,24 @@ function App() {
   // Function to handle file selection
   const handleFileSelect = () => {
     setFileSelected(true);
+  };
+
+  const copyTextToClipboard = () => {
+    navigator.clipboard.writeText(ocrText).then(() => {
+      alert('Text copied to clipboard!');
+    }).catch(err => {
+      console.error('Failed to copy text: ', err);
+    });
+  };
+
+  const downloadTextAsFile = (text, filename) => {
+    const element = document.createElement('a');
+    const file = new Blob([text], { type: 'text/plain' });
+    element.href = URL.createObjectURL(file);
+    element.download = filename;
+    document.body.appendChild(element); // Required for this to work in FireFox
+    element.click();
+    document.body.removeChild(element); // Clean-up
   };
 
   // Function to play audio of the extracted text
@@ -58,7 +77,11 @@ function App() {
               <h2>Extracted Text:</h2>
               <pre>{ocrText}</pre>
               {/* Add button to play audio */}
-              <button onClick={playAudio}>Play Audio</button>
+                            <div>
+              <button onClick={playAudio}><FaPlay /></button>
+  <button onClick={copyTextToClipboard}><FaCopy /></button>
+  <button onClick={() => downloadTextAsFile(ocrText, 'extracted-text.txt')}><FaDownload /></button>
+              </div>
             </div>
           )}
           {/* Conditionally render caption based on isUploading */}

@@ -1,29 +1,57 @@
-/* FeatureCards.css */
+/* Overall Feature Cards Section */
 .feature-cards {
     margin-top: 20px;
+    /* Ensure the section is centered and has padding on smaller screens */
+    padding: 0 10px;
   }
   
+  /* Heading Style */
   .feature-cards h2 {
-    color: #007bff;
-    margin-bottom: 10px;
+    color: #007bff; /* Primary color for emphasis */
+    margin-bottom: 20px; /* Increased for better visual separation */
+    text-align: center; /* Center-align the title for better focus */
   }
   
+  /* Container Style */
   .feature-cards-container {
     display: flex;
-    overflow-x: auto;
+    overflow-x: auto; /* Enables horizontal scrolling */
+    padding-bottom: 20px; /* Adds space at the bottom for better scroll visibility */
+    /* Hide scrollbar for a cleaner look, but maintain functionality */
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
   }
   
+  .feature-cards-container::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Opera */
+  }
+  
+  /* Individual Card Style */
   .feature-card {
-    flex: 0 0 auto;
-    background-color: #f4f4f4;
-    border-radius: 8px;
+    flex: 0 0 auto; /* Prevents cards from stretching */
+    background-color: #f4f4f4; /* Light background for contrast */
+    border-radius: 8px; /* Rounded corners for modern look */
     padding: 20px;
-    margin-right: 20px;
-    min-width: 250px;
+    margin-right: 20px; /* Space between cards */
+    min-width: 250px; /* Minimum width for consistency */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions for interactions */
   }
   
+  .feature-card:last-child {
+    margin-right: 0; /* Removes margin from the last card to align it properly */
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2); /* Enhanced shadow for hover effect */
+  }
+  
+  /* Card Text Style */
   .feature-card p {
     margin: 0;
-    font-size: 16px;
+    font-size: 16px; /* Standard font size for readability */
+    color: #333; /* Darker text for better contrast */
+    line-height: 1.5; /* Improved line height for readability */
   }
   

@@ -125,12 +125,115 @@ input[type='file'] {
 }
 
 .results-container {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  max-width: 100%; /* Ensure it does not exceed the parent's width */
+  box-sizing: border-box; /* Include padding and border in width */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  padding: 20px;
+  max-height: 400px; /* Adjust based on your layout needs */
 }
+
+.results-container pre {
+  width: 100%;
+  max-width: 100%;
+  max-height: 300px; /* Adjust this value based on your needs */
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-y: auto; /* This will show a scrollbar when the content exceeds 300px in height */
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  scrollbar-width: thin;
+  scrollbar-color: #007bff #f0f0f0;
+}
+
+/* Custom Scrollbar for Chrome, Edge, and Safari */
+.results-container pre::-webkit-scrollbar {
+  width: 8px; /* Scrollbar width */
+}
+
+.results-container pre::-webkit-scrollbar-track {
+  background: #f0f0f0; /* Track color */
+  border-radius: 4px; /* Match the border-radius of the pre tag */
+}
+
+.results-container pre::-webkit-scrollbar-thumb {
+  background-color: #007bff; /* Scrollbar thumb color */
+  border-radius: 4px; /* Rounded corners on the thumb */
+  border: 3px solid #f0f0f0; /* Creates padding around the thumb */
+}
+
 
 .results-container.shown {
   opacity: 1;
   transform: translateY(0);
+}
+
+
+/* Feature Cards Container Styles */
+.feature-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow the container to wrap cards on small screens */
+  justify-content: center; /* Center cards within the container */
+  gap: 20px; /* Space between cards */
+  margin-top: 20px; /* Space above the container */
+  margin-bottom: 40px; /* Space below the container */
+}
+
+/* Individual Feature Card Styles */
+.feature-card {
+  flex-basis: calc(33.333% - 40px); /* Three cards per row, accounting for gap */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Align card content centrally */
+  padding: 20px;
+  background-color: #fff; /* Card background color */
+  border-radius: 8px; /* Rounded corners for the cards */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.feature-card:hover {
+  transform: translateY(-5px); /* Slight lift effect on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Increased shadow for lifted effect */
+}
+
+/* Feature Card Title and Text Styles */
+.feature-card h3 {
+  font-size: 1.25rem; /* Title font size */
+  color: #007bff; /* Title color, matching the app's theme */
+  margin-bottom: 10px; /* Space below the title */
+}
+
+.feature-card p {
+  text-align: center; /* Center-align the text */
+  color: #333; /* Text color for readability */
+}
+
+/* Responsive Adjustments for Feature Cards */
+@media (max-width: 768px) {
+  .feature-card {
+    flex-basis: calc(50% - 40px); /* Adjust to two cards per row on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .feature-card {
+    flex-basis: 100%; /* Stack cards vertically on very small screens */
+  }
+}
+
+
+.icon-button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 20px;
+}
+
+.icon-button i {
+  color: #000; /* Or any color you prefer */
 }
