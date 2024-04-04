@@ -18,7 +18,6 @@ const Camera = () => {
                     console.error("Error accessing the camera: ", error);
                 });
         }
-
         // Set up interval for frame capture
         const id = setInterval(() => {
             captureFrame();
