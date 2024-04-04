@@ -1,5 +1,6 @@
 /* App.css */
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -9,45 +10,68 @@ body, html {
 
 .App {
   display: flex;
-  min-height: 100vh; /* Full screen height */
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  min-height: 100vh;
+}
+
+.key-features {
+  padding: 20px;
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+}
+
+.feature-cards {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 20px;
+}
+
+.feature-card {
+  flex-shrink: 0;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 200px;
 }
 
 .container {
-  height: 60vh; /* 60% of the screen height */
   display: flex;
-  justify-content: space-between;
+  width: 100%;
+  max-width: 800px;
+}
+
+.left-container {
+  flex: 1;
+  padding: 20px;
+}
+
+.right-container {
+  flex: 1;
+  padding: 20px;
+  background-color: #f8f8f8;
 }
 
 .input-container,
 .results-container {
-  width: 48%; /* Equal width for both containers */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
   padding: 20px;
-  background-color: #fff; /* White background */
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  overflow-y: auto; /* Add vertical scrollbar when needed */
-}
-
-.input-container {
-  margin-right: 20px;
 }
 
 .input-container.highlighted {
-  background-color: #f0f8ff; /* Light blue background when highlighted */
+  background-color: #f0f8ff;
 }
 
-h1 {
-  color: #007bff;
-  margin-bottom: 20px;
-  margin-top: 0; /* Reset top margin */
-}
-
-h2 {
-  color: #333;
-  margin-bottom: 10px;
-  margin-top: 0; /* Reset top margin */
+.camera-screen {
+  width: 100%;
+  max-width: 150px;
+  max-height: 100px;
 }
 
 pre {
@@ -57,15 +81,14 @@ pre {
   border-radius: 5px;
   border: 1px solid #ddd;
   overflow-x: auto;
-  margin: 0; /* Reset margin */
-  overflow-y: auto; /* Add vertical scrollbar when needed */
+  margin: 0;
 }
 
-input[type="file"],
+input[type='file'],
 button {
-  font-size: 12px; /* Decrease font size for buttons */
-  padding: 6px 12px; /* Decrease padding for buttons */
-  margin: 3px 0; /* Decrease margin for buttons */
+  font-size: 12px;
+  padding: 6px 12px;
+  margin: 3px 0;
   cursor: pointer;
   background-color: #007bff;
   color: white;
@@ -84,25 +107,23 @@ button:disabled {
 
 .custom-file-upload {
   display: inline-block;
-  padding: 6px 12px; /* Decrease padding for file upload button */
+  padding: 6px 12px;
   cursor: pointer;
-  background-color: #007bff; /* Blue background */
+  background-color: #007bff;
   color: white;
   border-radius: 5px;
-  font-size: 12px; /* Decrease font size for file upload button */
+  font-size: 12px;
   transition: background-color 0.3s ease;
 }
 
 .custom-file-upload:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #0056b3;
 }
 
-/* Custom styles for file input */
-input[type="file"] {
-  display: none; /* Hide the default file input */
+input[type='file'] {
+  display: none;
 }
 
-/* Animation for results container */
 .results-container {
   opacity: 0;
   transform: translateY(20px);
@@ -112,11 +133,4 @@ input[type="file"] {
 .results-container.shown {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* Styling for the camera screen */
-.camera-screen {
-  width: 100%; /* Adjust the width as needed */
-  max-width: 150px; /* Limit the maximum width */
-  max-height: 100px; /* Limit the maximum height */
 }

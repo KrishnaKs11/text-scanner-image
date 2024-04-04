@@ -1,0 +1,29 @@
+/* FeatureCards.css */
+.feature-cards {
+    margin-top: 20px;
+  }
+  
+  .feature-cards h2 {
+    color: #007bff;
+    margin-bottom: 10px;
+  }
+  
+  .feature-cards-container {
+    display: flex;
+    overflow-x: auto;
+  }
+  
+  .feature-card {
+    flex: 0 0 auto;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    padding: 20px;
+    margin-right: 20px;
+    min-width: 250px;
+  }
+  
+  .feature-card p {
+    margin: 0;
+    font-size: 16px;
+  }
+  

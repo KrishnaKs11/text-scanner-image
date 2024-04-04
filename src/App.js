@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import './App.css';
 import FileUpload from './FileUpload';
 import PhotoCapture from './PhotoCapture';
+import FeatureCards from './FeatureCards';
 
 function App() {
   const [ocrText, setOcrText] = useState('');
@@ -31,15 +32,25 @@ function App() {
     speechSynthesis.speak(utterance);
   };
 
+  // List of features
+  const features = [
+    "Convert notes to documents",
+    "Play audio of text/notes",
+    "Upload photo and get the captions and text extracted from images",
+    // Add more features as needed
+  ];
+
   return (
     <div className="App">
+      <div className="feature-container">
+        <FeatureCards features={features} />
+      </div>
       <div className="container">
         <div className={`input-container ${fileSelected ? 'highlighted' : ''}`}>
           <h1>Theft Scanner</h1>
           <PhotoCapture setOcrText={setOcrText} setCaptionText={setCaptionText} />
           <FileUpload setOcrText={handleSetOcrText} handleFileSelect={handleFileSelect} />
           {/* Add static content */}
-    
         </div>
         <div className={`results-container ${hasData ? 'shown' : 'hidden'}`}>
           {ocrText && (
