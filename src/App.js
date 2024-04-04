@@ -1,3 +1,4 @@
+// App.js
 import React, { useState } from 'react';
 import './App.css';
 import FileUpload from './FileUpload';
@@ -22,20 +23,31 @@ function App() {
     setFileSelected(true);
   };
 
+  // Function to play audio of the extracted text
+  const playAudio = () => {
+    // Using browser's built-in Text-to-Speech functionality
+    const speechSynthesis = window.speechSynthesis;
+    const utterance = new SpeechSynthesisUtterance(ocrText);
+    speechSynthesis.speak(utterance);
+  };
+
   return (
     <div className="App">
       <div className="container">
         <div className={`input-container ${fileSelected ? 'highlighted' : ''}`}>
           <h1>Theft Scanner</h1>
-          {/* Pass down the modified handler and handleFileSelect */}
           <PhotoCapture setOcrText={setOcrText} setCaptionText={setCaptionText} />
           <FileUpload setOcrText={handleSetOcrText} handleFileSelect={handleFileSelect} />
+          {/* Add static content */}
+    
         </div>
         <div className={`results-container ${hasData ? 'shown' : 'hidden'}`}>
           {ocrText && (
             <div>
               <h2>Extracted Text:</h2>
               <pre>{ocrText}</pre>
+              {/* Add button to play audio */}
+              <button onClick={playAudio}>Play Audio</button>
             </div>
           )}
           {/* Conditionally render caption based on isUploading */}

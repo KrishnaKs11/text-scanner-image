@@ -63,9 +63,9 @@ pre {
 
 input[type="file"],
 button {
-  font-size: 16px;
-  padding: 10px 20px;
-  margin: 10px 0;
+  font-size: 12px; /* Decrease font size for buttons */
+  padding: 6px 12px; /* Decrease padding for buttons */
+  margin: 3px 0; /* Decrease margin for buttons */
   cursor: pointer;
   background-color: #007bff;
   color: white;
@@ -84,12 +84,12 @@ button:disabled {
 
 .custom-file-upload {
   display: inline-block;
-  padding: 10px 20px;
+  padding: 6px 12px; /* Decrease padding for file upload button */
   cursor: pointer;
   background-color: #007bff; /* Blue background */
   color: white;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 12px; /* Decrease font size for file upload button */
   transition: background-color 0.3s ease;
 }
 
@@ -112,4 +112,11 @@ input[type="file"] {
 .results-container.shown {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Styling for the camera screen */
+.camera-screen {
+  width: 100%; /* Adjust the width as needed */
+  max-width: 150px; /* Limit the maximum width */
+  max-height: 100px; /* Limit the maximum height */
 }
