@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import OCRService from './ocrservice';
 import './PhotoCapture.css'; // Import CSS file
+import OCRResult from './OCRResult';
 
 const PhotoCapture = ({ setOcrText }) => {
     const videoRef = useRef(null);
@@ -99,10 +100,9 @@ const PhotoCapture = ({ setOcrText }) => {
                 )}
             </div>
             <div>
-                <h2>Caption:</h2>
-                <pre>{caption}</pre>
-                <h2>Extracted Text:</h2>
-                <pre>{ocrText}</pre>
+            {loading && <p>Loading...</p>}
+            {!loading && ocrText && <OCRResult caption={caption} text={ocrText} />}
+
             </div>
         </div>
     );
