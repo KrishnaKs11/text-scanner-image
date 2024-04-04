@@ -1,13 +1,10 @@
 import React, { useRef, useEffect, useState } from 'react';
 import OCRService from './ocrservice';
-import './PhotoCapture.css'; // Import CSS file
-import OCRResult from './OCRResult';
+import './PhotoCapture.css';
 
-const PhotoCapture = ({ setOcrText }) => {
+const PhotoCapture = ({ setOcrText, setCaptionText }) => { // Corrected props destructuring here
     const videoRef = useRef(null);
-    const [ocrText, setOcrTextState] = useState('');
     const [capturedImage, setCapturedImage] = useState(null);
-    const [caption, setCaption] = useState('');
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
@@ -53,8 +50,7 @@ const PhotoCapture = ({ setOcrText }) => {
 
     const handleRetake = () => {
         setCapturedImage(null);
-        setOcrTextState('');
-        setCaption('');
+        setCaptionText(''); // Clear the caption text as well on retake
     };
 
     const handleScan = async () => {
@@ -64,14 +60,14 @@ const PhotoCapture = ({ setOcrText }) => {
                 const response = await OCRService.analyzeImage(capturedImage);
 
                 if (response.captionResult && response.captionResult.text) {
-                    setCaption(response.captionResult.text);
+                    setCaptionText(response.captionResult.text);
                 }
 
                 if (response.readResult && response.readResult.blocks) {
                     const extractedText = response.readResult.blocks
                         .map(block => block.lines.map(line => line.text).join('\n'))
                         .join('\n');
-                    setOcrTextState(extractedText);
+                    setOcrText(extractedText);
                 }
             } catch (error) {
                 console.error('OCR Analysis Error:', error);
@@ -98,11 +94,6 @@ const PhotoCapture = ({ setOcrText }) => {
                 ) : (
                     <button onClick={handleCapture}>Capture</button>
                 )}
-            </div>
-            <div>
-            {loading && <p>Loading...</p>}
-            {!loading && ocrText && <OCRResult caption={caption} text={ocrText} />}
-
             </div>
         </div>
     );
