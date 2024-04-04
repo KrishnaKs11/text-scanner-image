@@ -1,0 +1,28 @@
+/* PhotoCapture.css */
+
+.photo-capture-container {
+    position: relative;
+    max-width: 400px; /* Set maximum width */
+    margin: 0 auto; /* Center the container horizontally */
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.video-feed {
+    width: 100%; /* Set video feed width to 100% */
+    max-width: 100%; /* Ensure video feed does not exceed container width */
+    height: auto;
+}
+
+.captured-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Set captured image width to 100% */
+    max-width: 100%; /* Ensure captured image does not exceed container width */
+    height: auto;
+}
