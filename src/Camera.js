@@ -3,10 +3,9 @@ import axios from 'axios';
 
 const Camera = () => {
     const videoRef = useRef(null);
-    const [intervalId, setIntervalId] = useState(null);
     const [ocrText, setOcrText] = useState('');
+
     useEffect(() => {
-        // Request camera access
         if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
             navigator.mediaDevices.getUserMedia({ video: true })
                 .then(stream => {
@@ -18,36 +17,27 @@ const Camera = () => {
                     console.error("Error accessing the camera: ", error);
                 });
         }
-        // Set up interval for frame capture
-        const id = setInterval(() => {
-            captureFrame();
-        }, 30000); // Adjust interval time as needed
 
-        setIntervalId(id);
+        const captureFrame = () => {
+            if (videoRef.current) {
+                const canvas = document.createElement('canvas');
+                canvas.width = videoRef.current.videoWidth;
+                canvas.height = videoRef.current.videoHeight;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
 
-        return () => {
-            clearInterval(intervalId);
+                canvas.toBlob(blob => {
+                    analyzeImage(blob);
+                }, 'image/jpeg', 0.95);
+            }
         };
-    }, []);
 
-    const captureFrame = () => {
-        if (videoRef.current) {
-            const canvas = document.createElement('canvas');
-            canvas.width = videoRef.current.videoWidth;
-            canvas.height = videoRef.current.videoHeight;
-            const ctx = canvas.getContext('2d');
-            ctx.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
+        const id = setInterval(captureFrame, 30000);
 
-            // Convert canvas to blob and then to a file-like object for Azure OCR
-            canvas.toBlob(blob => {
-                analyzeImage(blob);
-            }, 'image/jpeg', 0.95);
-        }
-    };
+        return () => clearInterval(id);
+    }, []); // Effect dependencies are empty, indicating this effect runs once on mount
 
     const analyzeImage = async (imageBlob) => {
-        // Here you'd implement the call to Azure Vision OCR API
-        // Similar to previous examples, using Axios or Fetch to POST the image
         const apiKey = 'fc3e1e21ada044039a8855e784b99c64';
         const endpoint = 'https://textextractorforimg.cognitiveservices.azure.com/computervision/imageanalysis:analyze?features=caption,read&model-version=latest&language=en&api-version=2024-02-01';
 
@@ -63,13 +53,9 @@ const Camera = () => {
                 }
             });
 
-            // Handle the OCR response
-            console.log(response.data);
-
-            // Extracting text from the response and joining lines
             const extractedText = response.data.readResult.blocks.map(block => block.lines.map(line => line.text).join('\n')).join('\n');
 
-            // Set the extracted text state
+           
             setOcrText(extractedText);
         } catch (error) {
             console.error('OCR Analysis Error:', error);
