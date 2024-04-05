@@ -1,0 +1,19 @@
+.footer {
+    background-color: #f8f9fa; /* Light background, but feel free to adjust */
+    color: #6c757d; /* Soft text color for contrast */
+    text-align: center; /* Centers the footer content */
+    padding: 20px 10px; /* Padding for top/bottom and left/right */
+    font-size: 14px; /* Smaller font size for footer text */
+    border-top: 1px solid #eaeaea; /* A subtle top border for definition */
+  }
+  
+  .footer-links a {
+    color: #007bff; /* Color for links, choose what fits your design */
+    margin: 0 10px; /* Spacing between links */
+    text-decoration: none; /* Removes underline from links */
+  }
+  
+  .footer-links a:hover {
+    text-decoration: underline; /* Adds underline on hover for link interaction */
+  }
+  

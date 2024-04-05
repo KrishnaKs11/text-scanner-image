@@ -9,7 +9,10 @@ const FeatureCards = ({ features }) => {
 
   return (
     <div className="feature-cards">
-      <h2>Key Features</h2>
+   <div className="display:flex ; flex direction: row">
+   <h2>Key Features</h2>
+      <h2>99% Accuracy</h2>
+   </div>
       <div className="feature-cards-container">
         {features.map((feature, index) => {
           // Get a random icon from the icons array

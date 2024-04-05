@@ -5,6 +5,8 @@ import PhotoCapture from './PhotoCapture';
 import FeatureCards from './FeatureCards';
 import Modal from './Modal';
 import { FaPlay, FaCopy, FaDownload } from 'react-icons/fa';
+import HeaderComponent from './HeaderComponent';
+import FooterComponent from './FooterComponent';
 
 function App() {
   const [ocrText, setOcrText] = useState('');
@@ -14,7 +16,7 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [isPremium, setIsPremium] = useState(false);
   const [scanCount, setScanCount] = useState(0);
-  
+
   // Removed dependency on scanCount within useCallback
   const incrementScanCount = useCallback(() => {
     setScanCount((prevCount) => prevCount + 1);
@@ -52,7 +54,7 @@ function App() {
 
   const downloadTextAsFile = (text, filename) => {
     const element = document.createElement('a');
-    const file = new Blob([text], {type: 'text/plain'});
+    const file = new Blob([text], { type: 'text/plain' });
     element.href = URL.createObjectURL(file);
     element.download = filename;
     document.body.appendChild(element);
@@ -80,6 +82,7 @@ function App() {
 
   return (
     <div className="App">
+      <HeaderComponent />
       {showModal && (
         <Modal onClose={() => setShowModal(false)} onValidTransaction={handleValidTransaction}>
           Please subscribe to continue using our service.
@@ -117,6 +120,7 @@ function App() {
           )}
         </div>
       </div>
+      <FooterComponent />
     </div>
   );
 }
