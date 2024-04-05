@@ -1,5 +1,5 @@
 // App.js
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import FileUpload from './FileUpload';
 import PhotoCapture from './PhotoCapture';
@@ -11,10 +11,10 @@ function App() {
   const [ocrText, setOcrText] = useState('');
   const [captionText, setCaptionText] = useState('');
   const [isUploading, setIsUploading] = useState(false); // New state to track uploading
-  const [fileSelected, setFileSelected] = useState(false); // State to track if a file is selected
-  const [scanCount, setScanCount] = useState(0); // Tracking scan counts
+  const [fileSelected, setFileSelected] = useState(false); // State to track if a file is selected // Tracking scan counts
   const [showModal, setShowModal] = useState(false); // For showing the subscription modal
   const [isPremium, setIsPremium] = useState(false);
+  const [scanCount, setScanCount] = useState(0);
   useEffect(() => {
     // If either ocrText or captionText changes, it's considered a scan operation
     if (ocrText || captionText) {
@@ -26,7 +26,7 @@ function App() {
   const incrementScanCount = () => {
     setScanCount(prevCount => {
       const newCount = prevCount + 1;
-      if (newCount > 3) {
+      if (scanCount > 3) {
         setShowModal(true);
       }
       return newCount;
@@ -83,9 +83,16 @@ function App() {
 
   return (
     <div className="App">
-      {showModal && <Modal onClose={() => setShowModal(false)}  onValidTransaction={handleValidTransaction}>Please subscribe to continue using our service.</Modal>}
-      {/* {showModal && <Modal onClose={() => setShowModal(false)} onValidTransaction={handleValidTransaction} />} */}
-      <div className="feature-container">
+      {
+        showModal && <Modal onClose={() => setShowModal(false)} onValidTransaction={handleValidTransaction} />
+      }
+      {
+        isPremium && (
+          <div className="premium-content">
+            Welcome, Premium Member! Enjoy your unlimited access.
+          </div>
+        )
+      }      <div className="feature-container">
         <FeatureCards features={features} />
       </div>
       <div className="container">
@@ -99,10 +106,10 @@ function App() {
             <div>
               <pre>{ocrText}</pre>
               {/* Add button to play audio */}
-                            <div>
-              <button onClick={playAudio}><FaPlay /></button>
-  <button onClick={copyTextToClipboard}><FaCopy /></button>
-  <button onClick={() => downloadTextAsFile(ocrText, 'extracted-text.txt')}><FaDownload /></button>
+              <div>
+                <button onClick={playAudio}><FaPlay /></button>
+                <button onClick={copyTextToClipboard}><FaCopy /></button>
+                <button onClick={() => downloadTextAsFile(ocrText, 'extracted-text.txt')}><FaDownload /></button>
               </div>
             </div>
           )}

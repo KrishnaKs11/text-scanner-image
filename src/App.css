@@ -237,3 +237,24 @@ input[type='file'] {
 .icon-button i {
   color: #000; /* Or any color you prefer */
 }
+
+.premium-content {
+  background-color: #f4f4f9; /* Light background to highlight premium content */
+  color: #4a4a4a; /* Dark text for readability */
+  border-left: 5px solid #007bff; /* Blue border on the left for emphasis */
+  padding: 20px; /* Ample padding for a spacious layout */
+  margin: 20px 0; /* Margin for separation from other content */
+  border-radius: 8px; /* Rounded corners for a modern look */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.premium-content h2 {
+  color: #007bff; /* Blue text for headers to match the border */
+  margin-top: 0; /* Remove top margin for the header */
+}
+
+.premium-content p {
+  font-size: 1rem; /* Standard font size for body text */
+  line-height: 1.6; /* Increased line height for readability */
+  margin: 10px 0; /* Margin for paragraph separation */
+}
