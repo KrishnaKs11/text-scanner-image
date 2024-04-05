@@ -8,26 +8,32 @@ const PhotoCapture = ({ setOcrText, setCaptionText }) => { // Corrected props de
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
+        // Capture the current value of videoRef.current in a variable
+        const videoElement = videoRef.current;
+    
         const startCamera = async () => {
             try {
                 const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-                if (videoRef.current) {
-                    videoRef.current.srcObject = stream;
+                // Use the captured videoElement instead of videoRef.current directly
+                if (videoElement) {
+                    videoElement.srcObject = stream;
                 }
             } catch (error) {
                 console.error("Error accessing the camera: ", error);
             }
         };
-
+    
         startCamera();
-
+    
         return () => {
-            if (videoRef.current && videoRef.current.srcObject) {
-                const tracks = videoRef.current.srcObject.getTracks();
+            // Use the captured videoElement in your cleanup logic
+            if (videoElement && videoElement.srcObject) {
+                const tracks = videoElement.srcObject.getTracks();
                 tracks.forEach(track => track.stop());
             }
         };
-    }, []);
+    }, []); // Since videoRef is a ref object, we don't need to include it in the dependencies array
+    
 
     const captureFrame = () => {
         if (videoRef.current) {
