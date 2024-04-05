@@ -1,9 +1,10 @@
 // App.js
-import React, { useState } from 'react';
+import React, { useEffect,useState } from 'react';
 import './App.css';
 import FileUpload from './FileUpload';
 import PhotoCapture from './PhotoCapture';
 import FeatureCards from './FeatureCards';
+import Modal from './Modal';
 import { FaPlay, FaCopy, FaDownload } from 'react-icons/fa';
 
 function App() {
@@ -11,9 +12,26 @@ function App() {
   const [captionText, setCaptionText] = useState('');
   const [isUploading, setIsUploading] = useState(false); // New state to track uploading
   const [fileSelected, setFileSelected] = useState(false); // State to track if a file is selected
+  const [scanCount, setScanCount] = useState(0); // Tracking scan counts
+  const [showModal, setShowModal] = useState(false); // For showing the subscription modal
+  const [isPremium, setIsPremium] = useState(false);
+  useEffect(() => {
+    // If either ocrText or captionText changes, it's considered a scan operation
+    if (ocrText || captionText) {
+      incrementScanCount();
+    }
+  }, [ocrText, captionText]); // Depend on ocrText and captionText
 
   const hasData = ocrText || captionText;
-
+  const incrementScanCount = () => {
+    setScanCount(prevCount => {
+      const newCount = prevCount + 1;
+      if (newCount > 3) {
+        setShowModal(true);
+      }
+      return newCount;
+    });
+  };
   // Update setOcrText to handle uploading state
   const handleSetOcrText = (text) => {
     setOcrText(text);
@@ -50,6 +68,10 @@ function App() {
     const utterance = new SpeechSynthesisUtterance(ocrText);
     speechSynthesis.speak(utterance);
   };
+  const handleValidTransaction = () => {
+    setIsPremium(true); // Update state to reflect premium status
+    setShowModal(false); // Close the modal
+  };
 
   // List of features
   const features = [
@@ -61,6 +83,8 @@ function App() {
 
   return (
     <div className="App">
+      {showModal && <Modal onClose={() => setShowModal(false)}  onValidTransaction={handleValidTransaction}>Please subscribe to continue using our service.</Modal>}
+      {/* {showModal && <Modal onClose={() => setShowModal(false)} onValidTransaction={handleValidTransaction} />} */}
       <div className="feature-container">
         <FeatureCards features={features} />
       </div>
