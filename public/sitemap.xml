@@ -1,3 +1,10 @@
-<url>
-  <loc>https://www.photoscanner.in/</loc>
-</url>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>http://www.photoscanner.in/</loc>
+  </url>
+    <url>
+    <loc>https://agreeable-pond-05ffba80f.5.azurestaticapps.net/</loc>
+  </url>
+  <!-- Add more URL entries here -->
+</urlset>
