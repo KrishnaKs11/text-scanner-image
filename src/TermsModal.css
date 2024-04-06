@@ -1,0 +1,69 @@
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: auto;
+    max-width: 600px;
+    overflow-y: auto;
+    max-height: 80%; /* Allows scrolling within the modal if content is too long */
+    z-index: 1001;
+  }
+  
+  .modal h2, .modal h3 {
+    color: #333;
+  }
+  
+  .modal p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-top: 10px;
+    color: #555; /* Slightly lighter than default text for better readability */
+  }
+  
+  .modal strong {
+    color: #000;
+  }
+  
+  .modal button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    float: right; /* Positions the button to the right */
+  }
+  
+  .modal button:hover {
+    background-color: #0056b3;
+  }
+  
+
+  /* Add to your existing PrivacyModal.css */
+.modal ul {
+    padding-left: 20px;
+    list-style-type: disc; /* Or any style that fits your design */
+  }
+  
+  .modal li {
+    margin-bottom: 10px;
+  }
+
+  
+  
