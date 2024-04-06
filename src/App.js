@@ -79,7 +79,6 @@ function App() {
     "Play audio of text/notes",
     "Upload photo and get the captions and text extracted from images",
   ];
-
   return (
     <div className="App">
       <HeaderComponent />
