@@ -21,7 +21,14 @@ const TermsModal = ({ isOpen, onClose }) => {
         <h3>3. Intellectual Property Rights</h3>
         <p>All content included on www.photoscanner.in, such as text, graphics, logos, images, as well as the compilation thereof, and any software used on the site, is the property of www.photoscanner.in or its suppliers and protected by copyright and other intellectual property laws.</p>
 
-        {/* Abbreviated for brevity. Continue adding all sections similarly. */}
+        <h3>4. Return Policy</h3>
+        <p>We accept returns within 30 days of the original purchase date. To be eligible for a return, your item must be unused and in the same condition that you received it. It must also be in the original packaging.</p>
+        <p>Refunds will be issued to the original payment method. Please allow up to 7-10 business days for the refund to reflect in your account.</p>
+
+        <h3>5. Refund Policy</h3>
+        <p>If you are not entirely satisfied with your purchase, we're here to help. You have 30 calendar days to return an item from the date you received it. To be eligible for a refund, your item must be unused and in the same condition that you received it. Your item must be in the original packaging.</p>
+        <p>Once we receive your item, we will inspect it and notify you that we have received your returned item. We will immediately notify you on the status of your refund after inspecting the item.</p>
+        <p>If your return is approved, we will initiate a refund to your credit card (or original method of payment). You will receive the credit within a certain amount of days, depending on your card issuer's policies.</p>
 
         <button onClick={onClose}>Close</button>
       </div>

@@ -47,6 +47,11 @@ const HeaderComponent = () => {
           <li>Assisting content creators in generating captions and extracting text from images for better accessibility.</li>
           <li>And many more innovative applications tailored to your needs.</li>
         </ul>
+        <div className="Contact-info">
+          <h3>Operational Address:</h3>
+          Contact Mail: krishnabasavarajks@hmail.com
+          Contact No: 9325729983
+        </div>
       </AboutModal>
     </div>
   );

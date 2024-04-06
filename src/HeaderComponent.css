@@ -127,3 +127,29 @@
     margin-bottom: 0;
   }
   
+
+  .Contact-info {
+    font-family: Arial, sans-serif;
+    background-color: #7eabd7;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .Contact-info p {
+    margin: 0;
+  }
+  
+  .Contact-info p:first-child {
+    margin-bottom: 10px;
+  }
+  
+  .Contact-info a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .Contact-info a:hover {
+    text-decoration: underline;
+  }
+  
