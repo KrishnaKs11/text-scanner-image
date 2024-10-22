@@ -266,12 +266,12 @@ body, html {
 
 /* Existing global settings remain the same */
 
-/* Mobile responsiveness */
 @media (max-width: 768px) {
     .product-overview {
         flex-direction: column;
         align-items: center;
         padding: 20px;
+        margin-top: 80px; /* Add space between header and product overview */
     }
 
     .content {
@@ -316,19 +316,38 @@ body, html {
     .modal {
         width: 90%;
     }
+
     .header {
-        height: 60px; /* Reduce header height on smaller screens */
+        display: flex; /* Ensure header is flex */
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center align items */
+        height: auto; /* Allow header to adjust height */
+        padding: 10px; /* Add padding */
     }
 
     .navigation {
-        flex-direction: row; /* Ensure items are in a row */
-        justify-content: space-around; /* Space out items evenly */
+        display: flex; /* Use flex for navigation */
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center align items */
         padding: 5px; /* Reduce padding for mobile */
     }
 
+    .navigation ul {
+        padding: 0; /* Remove default padding */
+        list-style: none; /* Remove bullet points */
+    }
+
+    .navigation li {
+        margin-bottom: 5px; /* Space between navigation items */
+    }
+
+    .user-actions {
+        margin-top: 10px; /* Space above user actions */
+    }
+
     .logo {
-        width: 120px; /* Increase width for mobile */
-        height: auto; /* Maintain aspect ratio */
+        width: 150px; /* Set width for better visibility */
+        margin-bottom: 10px; /* Space below logo */
     }
 
     .logo img {
