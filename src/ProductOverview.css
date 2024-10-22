@@ -199,14 +199,10 @@ body, html {
     font-size: 1.2rem;
 }
 .logo {
-    width: 100%; /* Let the logo take the full width of its container */
-    max-width: 250px; /* Set a maximum width to prevent it from getting too large */
-    height: auto; /* Adjust height based on the image's aspect ratio */
-    overflow: hidden; /* Ensures content stays within the logo div */
+    margin-top: 46px;
+    height: 85px;
+    width: 187px;
     display: flex;
-    justify-content: center; /* Center the image horizontally */
-    align-items: center; /* Center the image vertically */
-    border-radius: 10px; /* Rounded corners */
 }
 
 .logo img {
@@ -215,6 +211,7 @@ body, html {
     object-fit: cover; /* Ensure the image covers the div without stretching */
     border-radius: 10px; /* Matches the border radius of the logo div */
 }
+
 
 .logo:hover {
     transform: scale(1.05);
@@ -271,7 +268,7 @@ body, html {
         flex-direction: column;
         align-items: center;
         padding: 20px;
-        margin-top: 80px; /* Add space between header and product overview */
+        margin-top: 55px;
     }
 
     .content {
@@ -323,6 +320,7 @@ body, html {
         align-items: center; /* Center align items */
         height: auto; /* Allow header to adjust height */
         padding: 10px; /* Add padding */
+        max-height: 83px;
     }
 
     .navigation {
@@ -348,6 +346,7 @@ body, html {
     .logo {
         width: 150px; /* Set width for better visibility */
         margin-bottom: 10px; /* Space below logo */
+        margin-top: -5px;
     }
 
     .logo img {
