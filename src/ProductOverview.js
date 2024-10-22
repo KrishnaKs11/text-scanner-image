@@ -95,7 +95,7 @@ const ProductOverview = () => {
                 <div className="modal-overlay">
                     <div className="modal">
                         <h2>Pricing Details</h2>
-                        <p>For pricing details and installation charges, please contact <strong>9325729983</strong>.</p>
+                        <p>For pricing details and installation charges, please contact <strong>+919325729983</strong>.</p>
                         <p>Approximate charges: <strong>₹500/month</strong> (including installation).</p>
                         <p>ScreenInsights is a highly valuable tool that offers instant AI-driven insights and optimizes your workflow. It's a worthy investment for professionals who value productivity and efficiency.</p>
                         <button className="close-button" onClick={closeModal}>Close</button>
