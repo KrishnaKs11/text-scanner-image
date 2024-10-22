@@ -1,0 +1,285 @@
+/* Ensure the page respects header and footer */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #e6f7ff, #cceeff); /* Soft light blue gradient */
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.header, .footer {
+    height: 60px;
+    background-color: rgba(0, 40, 80, 0.9); /* Dark blue overlay with transparency */
+    color: #fff;
+    text-align: center;
+    line-height: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.product-overview {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to start for better structure */
+    padding: 40px;
+}
+
+.content {
+    max-width: 720px; /* Reduced max-width to make content smaller */
+    display: flex; /* Use flexbox for layout */
+    padding: 30px; /* Added padding for spacing */
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white box */
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Softer shadow for depth */
+    color: #333; /* Darker text for readability */
+    margin-right: 20px; /* Margin for spacing from reviews */
+    margin-top: 30px; /* Added top margin to center the content */
+}
+
+.text-section {
+    flex: 2; /* Takes more space */
+}
+.product-title {
+    font-size: 1.6rem; /* Size of the title */
+    margin-bottom: 15px; /* Space below the title */
+    color: #152452; /* Text color for high contrast */
+    margin-top: 20px; /* Space above the title */
+    font-weight: bold; /* Bold weight for emphasis */
+    text-align: center; /* Center the title */
+    padding: 15px; /* Padding around the text */
+    border: 3px solid transparent; /* Transparent border for hover effect */
+    border-radius: 15px; /* Rounded corners */
+    background: rgba(10, 64, 134, 0.4); /* Semi-transparent blue background */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Deeper shadow for depth */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+    backdrop-filter: blur(5px); /* Blurring the background behind the title */
+}
+
+/* Hover effect */
+.product-title:hover {
+    border-color: rgba(0, 255, 204, 0.6); /* Slightly more visible border on hover */
+    transform: scale(1.05); /* Slightly enlarge the title on hover */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5); /* Darker shadow on hover */
+}
+
+
+
+.product-description {
+    font-size: 1rem; /* Reduced description size */
+    margin-bottom: 15px; /* Reduced margin */
+    line-height: 1.4; /* Slightly tighter line height */
+    color: #555; /* Softer dark gray for description */
+}
+
+
+.image-section {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center image and button */
+}
+
+.product-screenshot {
+    max-width: 80%; /* Further reduced size of product image */
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    transition: transform 0.3s ease;
+}
+
+.product-screenshot:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.purchase-button {
+    background-color: #007bff; /* Bright blue for the button */
+    color: #fff;
+    border: none;
+    padding: 10px 24px; /* Adjusted padding */
+    font-size: 1rem; /* Reduced font size */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3); /* Enhanced shadow for button visibility */
+    margin-top: 10px; /* Reduced margin */
+}
+
+.purchase-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.5);
+}
+
+/* Reviews Section */
+.reviews-section {
+    flex: 1; /* Make it same size as the content */
+    max-width: 720px; /* Ensure reviews section matches the width of content */
+    background-color: rgba(240, 240, 240, 0.9); /* Light gray background for reviews */
+    border-radius: 8px;
+    padding: 20px; /* Increased padding for reviews */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 30px; /* Align with the content */
+}
+
+.reviews-section h2 {
+    font-size: 1.5rem; /* Reduced title size for reviews */
+    margin-bottom: 15px; /* Space below title */
+}
+
+.review {
+    margin-bottom: 10px; /* Spacing between reviews */
+    padding: 8px; /* Reduced padding */
+    border-radius: 5px;
+    background-color: #fff; /* White background for individual reviews */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.review p {
+    margin: 0; /* Remove default margin */
+    color: #333; /* Darker text color for readability */
+    font-size: 0.9rem; /* Smaller font size for review text */
+}
+
+.rating {
+    font-weight: bold; /* Bold rating text */
+    color: #ffcc00; /* Gold color for star rating */
+    font-size: 1rem; /* Adjusted star rating size */
+}
+
+/* Review Form */
+.review-form {
+    display: flex;
+    flex-direction: column; /* Stack form elements */
+    margin-top: 20px; /* Space above the form */
+}
+
+.review-form input,
+.review-form select,
+.review-form textarea {
+    margin-bottom: 10px; /* Space between form elements */
+    padding: 8px; /* Added padding for form elements */
+    border-radius: 4px; /* Rounded corners for form elements */
+    border: 1px solid #ccc; /* Light border for form elements */
+}
+
+.review-form button {
+    background-color: #007bff; /* Same button color */
+    color: #fff;
+    border: none;
+    padding: 10px; /* Padding for the submit button */
+    font-size: 1rem; /* Font size for the button */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.review-form button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.5);
+}
+
+.whatsapp-integration {
+    display: inline-flex; /* Aligns the icon and text nicely */
+    align-items: center; /* Centers the icon vertically with the text */
+    color: #1c6f3b;; /* WhatsApp brand color for the text */
+    margin-left: 5px; /* Space between the icon and text */
+}
+
+.whatsapp-icon {
+    background-color: #25D366; /* Green background */
+    border-radius: 50%; /* Circular shape */
+    padding: 4px; /* Padding to create space around the icon */
+    display: inline-flex; /* Aligns icon correctly */
+    align-items: center; /* Centers the icon vertically */
+    justify-content: center; /* Centers the icon horizontally */
+}
+
+.whatsapp-icon svg {
+    color: white; /* White color for the WhatsApp icon */
+    font-size: 1.2rem; /* Adjust icon size if needed */
+}
+
+
+.logo img{
+    width: 150px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    transition: transform 0.3s ease; /* Smooth scaling effect */
+}
+
+/* Hover effect */
+.logo:hover {
+    transform: scale(1.05); /* Slightly enlarge the logo on hover */
+}
+
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    text-align: center;
+}
+
+.modal h2 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.modal p {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.close-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.close-button:hover {
+    background-color: #0056b3;
+}
+
+.logo {
+    width: 200px; /* Adjust width as needed */
+    overflow: hidden; /* Ensures content stays within the circular border */
+    display: flex; /* Center the image inside the div */
+    align-items: center; /* Vertically center the image */
+    border-radius: 10px;
+}
+
+.logo img {
+    margin: 5px;
+    width: 100%; /* Ensures the image fills the div */
+    height: 100%; /* Maintains aspect ratio of the image */
+    object-fit: cover; /* Ensures the image covers the container without distortion */
+}
+
+.logo:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
+}
+
