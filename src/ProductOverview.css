@@ -1,4 +1,4 @@
-/* Ensure the page respects header and footer */
+/* Global settings */
 body, html {
     margin: 0;
     padding: 0;
@@ -33,191 +33,192 @@ body, html {
 .content {
     max-width: 720px; /* Reduced max-width to make content smaller */
     display: flex; /* Use flexbox for layout */
-    padding: 30px; /* Added padding for spacing */
+    padding: 30px;
     background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white box */
     border-radius: 12px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Softer shadow for depth */
-    color: #333; /* Darker text for readability */
-    margin-right: 20px; /* Margin for spacing from reviews */
-    margin-top: 30px; /* Added top margin to center the content */
+    color: #333;
+    margin-right: 20px;
+    margin-top: 30px;
 }
 
 .text-section {
-    flex: 2; /* Takes more space */
+    flex: 2;
 }
+
 .product-title {
-    font-size: 1.6rem; /* Size of the title */
-    margin-bottom: 15px; /* Space below the title */
-    color: #152452; /* Text color for high contrast */
-    margin-top: 20px; /* Space above the title */
-    font-weight: bold; /* Bold weight for emphasis */
-    text-align: center; /* Center the title */
-    padding: 15px; /* Padding around the text */
-    border: 3px solid transparent; /* Transparent border for hover effect */
-    border-radius: 15px; /* Rounded corners */
-    background: rgba(10, 64, 134, 0.4); /* Semi-transparent blue background */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Deeper shadow for depth */
-    transition: all 0.3s ease; /* Smooth transition for hover effect */
-    backdrop-filter: blur(5px); /* Blurring the background behind the title */
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    color: #152452;
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: center;
+    padding: 15px;
+    border: 3px solid transparent;
+    border-radius: 15px;
+    background: rgba(10, 64, 134, 0.4);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
 }
 
-/* Hover effect */
 .product-title:hover {
-    border-color: rgba(0, 255, 204, 0.6); /* Slightly more visible border on hover */
-    transform: scale(1.05); /* Slightly enlarge the title on hover */
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5); /* Darker shadow on hover */
+    border-color: rgba(0, 255, 204, 0.6);
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
 }
-
-
 
 .product-description {
-    font-size: 1rem; /* Reduced description size */
-    margin-bottom: 15px; /* Reduced margin */
-    line-height: 1.4; /* Slightly tighter line height */
-    color: #555; /* Softer dark gray for description */
+    font-size: 1rem;
+    margin-bottom: 15px;
+    line-height: 1.4;
+    color: #555;
 }
-
 
 .image-section {
     margin-top: 5%;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center image and button */
+    align-items: center;
 }
 
 .product-screenshot {
-    max-width: 80%; /* Further reduced size of product image */
+    max-width: 80%;
     height: auto;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
 
 .product-screenshot:hover {
-    transform: scale(1.05); /* Slight zoom effect on hover */
+    transform: scale(1.05);
 }
 
 .purchase-button {
-    background-color: #007bff; /* Bright blue for the button */
+    background-color: #007bff;
     color: #fff;
     border: none;
-    padding: 10px 24px; /* Adjusted padding */
-    font-size: 1rem; /* Reduced font size */
+    padding: 10px 24px;
+    font-size: 1rem;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3); /* Enhanced shadow for button visibility */
-    margin-top: 10px; /* Reduced margin */
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+    margin-top: 10px;
 }
 
 .purchase-button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3;
     box-shadow: 0 6px 12px rgba(0, 123, 255, 0.5);
 }
 
-/* Reviews Section */
 .reviews-section {
-    flex: 1; /* Make it same size as the content */
-    max-width: 720px; /* Ensure reviews section matches the width of content */
-    background-color: rgba(240, 240, 240, 0.9); /* Light gray background for reviews */
+    flex: 1;
+    max-width: 720px;
+    background-color: rgba(240, 240, 240, 0.9);
     border-radius: 8px;
-    padding: 20px; /* Increased padding for reviews */
+    padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 30px; /* Align with the content */
+    margin-top: 30px;
 }
 
 .reviews-section h2 {
-    font-size: 1.5rem; /* Reduced title size for reviews */
-    margin-bottom: 15px; /* Space below title */
+    font-size: 1.5rem;
+    margin-bottom: 15px;
 }
 
 .review {
-    margin-bottom: 10px; /* Spacing between reviews */
-    padding: 8px; /* Reduced padding */
+    margin-bottom: 10px;
+    padding: 8px;
     border-radius: 5px;
-    background-color: #fff; /* White background for individual reviews */
+    background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .review p {
-    margin: 0; /* Remove default margin */
-    color: #333; /* Darker text color for readability */
-    font-size: 0.9rem; /* Smaller font size for review text */
+    margin: 0;
+    color: #333;
+    font-size: 0.9rem;
 }
 
 .rating {
-    font-weight: bold; /* Bold rating text */
-    color: #ffcc00; /* Gold color for star rating */
-    font-size: 1rem; /* Adjusted star rating size */
+    font-weight: bold;
+    color: #ffcc00;
+    font-size: 1rem;
 }
 
-/* Review Form */
 .review-form {
     display: flex;
-    flex-direction: column; /* Stack form elements */
-    margin-top: 20px; /* Space above the form */
+    flex-direction: column;
+    margin-top: 20px;
 }
 
 .review-form input,
 .review-form select,
 .review-form textarea {
-    margin-bottom: 10px; /* Space between form elements */
-    padding: 8px; /* Added padding for form elements */
-    border-radius: 4px; /* Rounded corners for form elements */
-    border: 1px solid #ccc; /* Light border for form elements */
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
 }
 
 .review-form button {
-    background-color: #007bff; /* Same button color */
+    background-color: #007bff;
     color: #fff;
     border: none;
-    padding: 10px; /* Padding for the submit button */
-    font-size: 1rem; /* Font size for the button */
+    padding: 10px;
+    font-size: 1rem;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .review-form button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3;
     box-shadow: 0 6px 12px rgba(0, 123, 255, 0.5);
 }
 
 .whatsapp-integration {
-    display: inline-flex; /* Aligns the icon and text nicely */
-    align-items: center; /* Centers the icon vertically with the text */
-    color: #1c6f3b;; /* WhatsApp brand color for the text */
-    margin-left: 5px; /* Space between the icon and text */
+    display: inline-flex;
+    align-items: center;
+    color: #1c6f3b;
+    margin-left: 5px;
 }
 
 .whatsapp-icon {
-    background-color: #25D366; /* Green background */
-    border-radius: 50%; /* Circular shape */
-    padding: 4px; /* Padding to create space around the icon */
-    display: inline-flex; /* Aligns icon correctly */
-    align-items: center; /* Centers the icon vertically */
-    justify-content: center; /* Centers the icon horizontally */
+    background-color: #25D366;
+    border-radius: 50%;
+    padding: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .whatsapp-icon svg {
-    color: white; /* White color for the WhatsApp icon */
-    font-size: 1.2rem; /* Adjust icon size if needed */
+    color: white;
+    font-size: 1.2rem;
+}
+.logo {
+    width: 100%; /* Let the logo take the full width of its container */
+    max-width: 250px; /* Set a maximum width to prevent it from getting too large */
+    height: auto; /* Adjust height based on the image's aspect ratio */
+    overflow: hidden; /* Ensures content stays within the logo div */
+    display: flex;
+    justify-content: center; /* Center the image horizontally */
+    align-items: center; /* Center the image vertically */
+    border-radius: 10px; /* Rounded corners */
 }
 
-
-.logo img{
-    width: 150px; /* Adjust the width as needed */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 15px; /* Rounded corners */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-    transition: transform 0.3s ease; /* Smooth scaling effect */
+.logo img {
+    width: 100%; /* Make the image fill the width of its container */
+    height: auto; /* Maintain the aspect ratio */
+    object-fit: cover; /* Ensure the image covers the div without stretching */
+    border-radius: 10px; /* Matches the border radius of the logo div */
 }
 
-/* Hover effect */
 .logo:hover {
-    transform: scale(1.05); /* Slightly enlarge the logo on hover */
+    transform: scale(1.05);
 }
-
 
 .modal-overlay {
     position: fixed;
@@ -225,7 +226,7 @@ body, html {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    background: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -263,23 +264,76 @@ body, html {
     background-color: #0056b3;
 }
 
-.logo {
-    width: 200px; /* Adjust width as needed */
-    overflow: hidden; /* Ensures content stays within the circular border */
-    display: flex; /* Center the image inside the div */
-    align-items: center; /* Vertically center the image */
-    border-radius: 10px;
-}
+/* Existing global settings remain the same */
 
-.logo img {
-    margin: 5px;
-    width: 100%; /* Ensures the image fills the div */
-    height: 100%; /* Maintains aspect ratio of the image */
-    object-fit: cover; /* Ensures the image covers the container without distortion */
-}
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .product-overview {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
 
-.logo:hover {
-    transform: scale(1.1); /* Slight zoom effect on hover */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
-}
+    .content {
+        max-width: 100%;
+        margin-right: 0;
+        margin-top: 20px;
+        padding: 20px;
+    }
 
+    .reviews-section {
+        max-width: 100%;
+        margin-top: 20px;
+        padding: 15px;
+    }
+
+    .product-title {
+        font-size: 1.4rem;
+        padding: 10px;
+    }
+
+    .product-description {
+        font-size: 0.9rem;
+    }
+
+    .purchase-button {
+        font-size: 0.9rem;
+        padding: 8px 20px;
+    }
+
+    .review-form input,
+    .review-form select,
+    .review-form textarea {
+        font-size: 0.9rem;
+        padding: 6px;
+    }
+
+    .review-form button {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    .modal {
+        width: 90%;
+    }
+    .header {
+        height: 60px; /* Reduce header height on smaller screens */
+    }
+
+    .navigation {
+        flex-direction: row; /* Ensure items are in a row */
+        justify-content: space-around; /* Space out items evenly */
+        padding: 5px; /* Reduce padding for mobile */
+    }
+
+    .logo {
+        width: 120px; /* Increase width for mobile */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    .logo img {
+        width: 100%; /* Ensures the image fills the logo div */
+        height: auto; /* Maintain aspect ratio */
+        object-fit: contain; /* Ensure the image is fully visible */
+    }
+}
