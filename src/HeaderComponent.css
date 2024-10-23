@@ -173,3 +173,29 @@
     text-decoration: underline;
   }
   
+  @media only screen and (max-width: 768px) {
+    .modalContent {
+        padding: 15px;
+        border-radius: 6px;
+        max-width: 80%;
+    }
+    .modalContent ul {
+      padding-left: 20px;
+      margin: 0;
+  }
+  
+  .modalContent ul li {
+      font-size: 14px; /* Make list items smaller */
+      line-height: 1.4;
+      padding: 5px 0; /* Add spacing between list items */
+  }
+}
+
+@media only screen and (max-width: 480px) {
+    .modalContent {
+        padding: 10px;
+        border-radius: 4px;
+        max-width: 95%;
+        max-height: 85vh; /* Ensure the modal adjusts to smaller mobile screens */
+    }
+}
