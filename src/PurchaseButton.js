@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const PurchaseButton = () => {
+    const [isDownloaded, setIsDownloaded] = useState(false); // To track if the file has already been downloaded
+
     const loadRazorpay = () => {
         return new Promise((resolve) => {
             const script = document.createElement('script');
@@ -21,7 +23,7 @@ const PurchaseButton = () => {
 
         const options = {
             key: 'rzp_live_yswNQy40Z4bnw0', // Enter your Razorpay Key ID here
-            amount: 500, // ₹5 in paise
+            amount: 30000, // ₹300 in paise
             currency: 'INR',
             name: 'ScreenInsights',
             description: 'Payment for ScreenInsights subscription',
@@ -54,8 +56,23 @@ const PurchaseButton = () => {
         paymentObject.open();
     };
 
+    // This function handles the successful payment
     const handlePaymentSuccess = (response) => {
-        console.log('Payment successful, details:', response);
+        if (!isDownloaded) {
+            console.log('Payment successful, details:', response);
+            // Trigger file download after successful payment
+            const sasUrl = 'https://screensights.blob.core.windows.net/download/WorkerService.zip?sp=r&st=2024-10-24T11:35:20Z&se=2025-12-31T19:35:20Z&spr=https&sv=2022-11-02&sr=b&sig=bxEqYDfZNKSJTihgr1G5nzVsE78MuN44yYHrPUz%2BBUE%3D';
+
+            // Create an anchor element and trigger the download
+            const a = document.createElement('a');
+            a.href = sasUrl;
+            a.download = 'WorkerService.zip'; // Set the file name
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a); // Clean up the DOM element
+
+            setIsDownloaded(true); // Ensure that the file is downloaded only once
+        }
     };
 
     const handlePaymentFailure = (response) => {
@@ -64,7 +81,7 @@ const PurchaseButton = () => {
 
     return (
         <button onClick={handlePayment} className="purchase-button">
-            Purchase Now for ₹5
+            Purchase Now for  ₹300
         </button>
     );
 };
