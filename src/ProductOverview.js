@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import './ProductOverview.css'; // Import the CSS file for styling
-import productScreenshot from './Assets/product-screenshot.jpeg'; // Add your product screenshot here
+import './ProductOverview.css';
+import productScreenshot from './Assets/product-screenshot.jpeg';
 import { WhatsApp } from '@mui/icons-material';
+import PurchaseButton from './PurchaseButton'; // Import the new PurchaseButton component
 
 const ProductOverview = () => {
     const [reviews, setReviews] = useState([
@@ -12,7 +13,6 @@ const ProductOverview = () => {
     const [name, setName] = useState('');
     const [rating, setRating] = useState(5);
     const [comment, setComment] = useState('');
-    const [isModalOpen, setIsModalOpen] = useState(false); // State for modal popup
 
     const handleReviewSubmit = (e) => {
         e.preventDefault();
@@ -21,14 +21,6 @@ const ProductOverview = () => {
             setName('');
             setComment('');
         }
-    };
-
-    const handlePurchaseClick = () => {
-        setIsModalOpen(true); // Open the modal on purchase click
-    };
-
-    const closeModal = () => {
-        setIsModalOpen(false); // Close the modal
     };
 
     return (
@@ -42,7 +34,6 @@ const ProductOverview = () => {
                         With built-in <span className="whatsapp-integration"><div className="whatsapp-icon"><WhatsApp fontSize="small" /></div> WhatsApp</span> integration, receive notifications directly in your workspace.
                         Stay ahead of tasks with intelligent support that adapts to your needs.
                     </p>
-
                 </div>
                 <div className="image-section">
                     <img
@@ -50,7 +41,8 @@ const ProductOverview = () => {
                         alt="AI Product Screenshot"
                         className="product-screenshot"
                     />
-                    <button className="purchase-button" onClick={handlePurchaseClick}>Purchase Now</button>
+                    {/* Replace the old purchase button with the PurchaseButton component */}
+                    <PurchaseButton />
                 </div>
             </div>
 
@@ -89,19 +81,6 @@ const ProductOverview = () => {
                     <button type="submit">Submit Review</button>
                 </form>
             </div>
-
-            {/* Modal Popup for Purchase */}
-            {isModalOpen && (
-                <div className="modal-overlay">
-                    <div className="modal">
-                        <h2>Pricing Details</h2>
-                        <p>For pricing details and installation charges, please contact <strong>+919325729983</strong>.</p>
-                        <p>Approximate charges: <strong>₹500/month</strong> (including installation).</p>
-                        <p>ScreenInsights is a highly valuable tool that offers instant AI-driven insights and optimizes your workflow. It's a worthy investment for professionals who value productivity and efficiency.</p>
-                        <button className="close-button" onClick={closeModal}>Close</button>
-                    </div>
-                </div>
-            )}
         </div>
     );
 };
