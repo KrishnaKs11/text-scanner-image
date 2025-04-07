@@ -1,357 +1,168 @@
-/* Global settings */
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #e6f7ff, #cceeff); /* Soft light blue gradient */
+.product-overview {
+    padding: 4rem 2rem;
+    background: linear-gradient(to bottom, #0f0f0f, #1a1a1a);
+    color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+    backdrop-filter: blur(6px);
 }
 
-#root {
+.overview-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.text-content {
     display: flex;
     flex-direction: column;
-    height: 100%;
-}
-
-.header, .footer {
-    height: 60px;
-    background-color: rgba(0, 40, 80, 0.9); /* Dark blue overlay with transparency */
-    color: #fff;
-    text-align: center;
-    line-height: 30px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.product-overview {
-    flex: 1;
-    display: flex;
     justify-content: center;
-    align-items: flex-start; /* Align to start for better structure */
-    padding: 40px;
 }
 
-.content {
-    max-width: 720px; /* Reduced max-width to make content smaller */
-    display: flex; /* Use flexbox for layout */
-    padding: 30px;
-    background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white box */
-    border-radius: 12px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Softer shadow for depth */
-    color: #333;
-    margin-right: 20px;
-    margin-top: 30px;
+.text-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #00ffe7;
+    text-shadow: 0 0 10px #00ffe7;
 }
 
-.text-section {
-    flex: 2;
+.intro-text {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #ccc;
 }
 
-.product-title {
-    font-size: 1.6rem;
-    margin-bottom: 15px;
-    color: #152452;
-    margin-top: 20px;
-    font-weight: bold;
-    text-align: center;
-    padding: 15px;
-    border: 3px solid transparent;
-    border-radius: 15px;
-    background: rgba(10, 64, 134, 0.4);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
-    backdrop-filter: blur(5px);
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
 }
 
-.product-title:hover {
-    border-color: rgba(0, 255, 204, 0.6);
-    transform: scale(1.05);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+.feature-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 1rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.product-description {
-    font-size: 1rem;
-    margin-bottom: 15px;
-    line-height: 1.4;
-    color: #555;
+.feature-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.25);
 }
 
-.image-section {
-    margin-top: 5%;
+.feature-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.feature-info h3 {
+    margin: 0;
+    color: #00ffe7;
+}
+
+.feature-info p {
+    color: #ccc;
+    font-size: 0.95rem;
+}
+
+.image-content {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    gap: 1rem;
 }
 
 .product-screenshot {
-    max-width: 80%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.product-screenshot:hover {
-    transform: scale(1.05);
-}
-
-.purchase-button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 24px;
-    font-size: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
-    margin-top: 10px;
-}
-
-.purchase-button:hover {
-    background-color: #0056b3;
-    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.5);
+    width: 100%;
+    max-width: 400px;
+    border-radius: 16px;
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
 }
 
 .reviews-section {
+    margin-top: 3rem;
+}
+
+.reviews-section h2,
+.reviews-section h3 {
+    color: #00ffe7;
+}
+
+.reviews-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.review-card {
     flex: 1;
-    max-width: 720px;
-    background-color: rgba(240, 240, 240, 0.9);
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 30px;
+    min-width: 250px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1rem;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.reviews-section h2 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
+.review-name {
+    color: #fff;
+    margin-bottom: 0.25rem;
 }
 
-.review {
-    margin-bottom: 10px;
-    padding: 8px;
-    border-radius: 5px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.review-rating {
+    color: gold;
+    margin-bottom: 0.5rem;
 }
 
-.review p {
-    margin: 0;
-    color: #333;
-    font-size: 0.9rem;
-}
-
-.rating {
-    font-weight: bold;
-    color: #ffcc00;
-    font-size: 1rem;
+.review-comment {
+    color: #ccc;
 }
 
 .review-form {
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
+    gap: 1rem;
+    max-width: 600px;
 }
 
 .review-form input,
 .review-form select,
 .review-form textarea {
-    margin-bottom: 10px;
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
+    padding: 0.8rem;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1rem;
 }
 
 .review-form button {
-    background-color: #007bff;
-    color: #fff;
+    padding: 0.8rem;
+    background: #00ffe7;
     border: none;
-    padding: 10px;
-    font-size: 1rem;
-    border-radius: 5px;
+    border-radius: 8px;
+    color: #000;
+    font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    transition: background 0.3s ease;
 }
 
 .review-form button:hover {
-    background-color: #0056b3;
-    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.5);
+    background: #00cccc;
 }
 
-.whatsapp-integration {
-    display: inline-flex;
-    align-items: center;
-    color: #1c6f3b;
-    margin-left: 5px;
-}
-
-.whatsapp-icon {
-    background-color: #25D366;
-    border-radius: 50%;
-    padding: 4px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.whatsapp-icon svg {
-    color: white;
-    font-size: 1.2rem;
-}
-.logo {
-    margin-top: 46px;
-    height: 85px;
-    width: 187px;
-    display: flex;
-}
-
-.logo img {
-    width: 100%; /* Make the image fill the width of its container */
-    height: auto; /* Maintain the aspect ratio */
-    object-fit: cover; /* Ensure the image covers the div without stretching */
-    border-radius: 10px; /* Matches the border radius of the logo div */
-}
-
-
-.logo:hover {
-    transform: scale(1.05);
-}
-
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    width: 400px;
-    text-align: center;
-}
-
-.modal h2 {
-    margin-bottom: 15px;
-    color: #333;
-}
-
-.modal p {
-    margin-bottom: 10px;
-    color: #555;
-}
-
-.close-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.close-button:hover {
-    background-color: #0056b3;
-}
-
-/* Existing global settings remain the same */
-
-@media (max-width: 768px) {
-    .product-overview {
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
-        margin-top: 55px;
+@media (max-width: 900px) {
+    .overview-content {
+        grid-template-columns: 1fr;
     }
 
-    .content {
-        max-width: 100%;
-        margin-right: 0;
-        margin-top: 20px;
-        padding: 20px;
-    }
-
-    .reviews-section {
-        max-width: 100%;
-        margin-top: 20px;
-        padding: 15px;
-    }
-
-    .product-title {
-        font-size: 1.4rem;
-        padding: 10px;
-    }
-
-    .product-description {
-        font-size: 0.9rem;
-    }
-
-    .purchase-button {
-        font-size: 0.9rem;
-        padding: 8px 20px;
-    }
-
-    .review-form input,
-    .review-form select,
-    .review-form textarea {
-        font-size: 0.9rem;
-        padding: 6px;
-    }
-
-    .review-form button {
-        font-size: 0.9rem;
-        padding: 8px;
-    }
-
-    .modal {
-        width: 90%;
-    }
-
-    .header {
-        display: flex; /* Ensure header is flex */
-        flex-direction: column; /* Stack elements vertically */
-        align-items: center; /* Center align items */
-        height: auto; /* Allow header to adjust height */
-        padding: 10px; /* Add padding */
-        max-height: 83px;
-    }
-
-    .navigation {
-        display: flex; /* Use flex for navigation */
-        flex-direction: column; /* Stack items vertically */
-        align-items: center; /* Center align items */
-        padding: 5px; /* Reduce padding for mobile */
-    }
-
-    .navigation ul {
-        padding: 0; /* Remove default padding */
-        list-style: none; /* Remove bullet points */
-    }
-
-    .navigation li {
-        margin-bottom: 5px; /* Space between navigation items */
-    }
-
-    .user-actions {
-        margin-top: 10px; /* Space above user actions */
-    }
-
-    .logo {
-        width: 150px; /* Set width for better visibility */
-        margin-bottom: 10px; /* Space below logo */
-        margin-top: -5px;
-    }
-
-    .logo img {
-        width: 100%; /* Ensures the image fills the logo div */
-        height: auto; /* Maintain aspect ratio */
-        object-fit: contain; /* Ensure the image is fully visible */
+    .image-content {
+        order: -1;
     }
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './HeaderComponent.css';
-import logophotoscanner from './Assets/screensight_logo.png';
+import logophotoscanner from './Assets/hackimg.jpg';
 
 const AboutModal = ({ isOpen, closeModal, children }) => {
   if (!isOpen) return null;
