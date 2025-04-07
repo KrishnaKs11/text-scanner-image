@@ -23,7 +23,7 @@ const PurchaseButton = () => {
 
         const options = {
             key: 'rzp_live_yswNQy40Z4bnw0', // Enter your Razorpay Key ID here
-            amount: 30000, // ₹300 in paise
+            amount: 300, // ₹300 in paise
             currency: 'INR',
             name: 'ScreenInsights',
             description: 'Payment for ScreenInsights subscription',
