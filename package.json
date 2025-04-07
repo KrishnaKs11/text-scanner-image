@@ -1,7 +1,18 @@
 {
   "name": "theftscanner",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "private": false,
+  "description": "AI-powered text scanner from images with OCR and intelligent response",
+  "author": "KrishnaKs11",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KrishnaKs11/text-scanner-image.git"
+  },
+  "homepage": "https://krishnaks11.github.io/text-scanner-image",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KrishnaKs11/text-scanner-image/issues"
+  },
   "dependencies": {
     "@craco/craco": "^7.1.0",
     "@emotion/react": "^11.13.3",
@@ -30,7 +41,9 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -49,5 +62,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
 }

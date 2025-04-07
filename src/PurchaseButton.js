@@ -61,8 +61,7 @@ const PurchaseButton = () => {
         if (!isDownloaded) {
             console.log('Payment successful, details:', response);
             // Trigger file download after successful payment
-            const sasUrl = 'https://screensights.blob.core.windows.net/download/WorkerService.zip?sp=r&st=2024-10-24T11:35:20Z&se=2025-12-31T19:35:20Z&spr=https&sv=2022-11-02&sr=b&sig=bxEqYDfZNKSJTihgr1G5nzVsE78MuN44yYHrPUz%2BBUE%3D';
-
+            const sasUrl = 'https://drive.google.com/uc?export=download&id=1_pQiv4x0Vu-x8Y1ehfVqa_colLcbWZga';
             // Create an anchor element and trigger the download
             const a = document.createElement('a');
             a.href = sasUrl;
