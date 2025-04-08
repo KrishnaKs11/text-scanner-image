@@ -22,28 +22,29 @@ const PurchaseButton = () => {
         }
 
         const options = {
-            key: 'rzp_live_yswNQy40Z4bnw0', // Enter your Razorpay Key ID here
-            amount: 300, // ₹300 in paise
+            key: 'rzp_live_yswNQy40Z4bnw0',
+            amount: 300, // ₹3 in paise
             currency: 'INR',
             name: 'ScreenInsights',
             description: 'Payment for ScreenInsights subscription',
-            image: '/your-logo.png', // Replace with your logo URL
+            image: '/your-logo.png',
             handler: function (response) {
-                alert(`Payment successful! Payment ID: ${response.razorpay_payment_id}`);
-                handlePaymentSuccess(response); // Handle success scenario
+              alert(`Payment successful! Payment ID: ${response.razorpay_payment_id}`);
+              handlePaymentSuccess(response);
             },
             prefill: {
-                name: 'Your Name', // User name
-                email: 'your-email@example.com', // User email
-                contact: '9999999999', // User phone number
+              name: 'Your Name',
+              email: 'your-email@example.com',
+              contact: '9999999999',
             },
             notes: {
-                address: 'Your Company Address',
+              address: 'Your Company Address',
             },
             theme: {
-                color: '#3399cc',
+              color: '#3399cc',
             },
-        };
+            redirect: false, // 👈 Add this line
+          };          
 
         const paymentObject = new window.Razorpay(options);
 
