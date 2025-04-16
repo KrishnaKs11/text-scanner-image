@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { HmacSHA256 } from 'crypto-js';
 
 const PurchaseButton = () => {
     const [isDownloaded, setIsDownloaded] = useState(false); // To track if the file has already been downloaded
@@ -55,7 +56,7 @@ const PurchaseButton = () => {
         }
 
         const options = {
-            key: 'rzp_live_yswNQy40Z4bnw0', // Your Razorpay key
+            key: 'rzp_live_SUq7jMbXhUcfHL', // Your Razorpay key
             amount: order.amount, // Amount in paise
             currency: order.currency, // Currency, e.g., "INR"
             order_id: order.id, // Razorpay Order ID from backend
@@ -155,7 +156,7 @@ const PurchaseButton = () => {
                 razorpay_signature: signature,
             };
 
-            const callbackResponse = await fetch('https://localhost:7058/api/razorpaycallback/callback', {
+            const callbackResponse = await fetch('https://razorpay-image-latest.onrender.com/api/razorpaycallback/callback', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -171,12 +172,11 @@ const PurchaseButton = () => {
         }
     };
 
-    // Generate the Razorpay signature for verification
     const generateSignature = (orderId, paymentId) => {
-        const secret = 'your_razorpay_secret'; // Use your Razorpay secret here
+        const secret = '2WoX7SjIZ9mrv5f58YM1c8co'; // Use your Razorpay secret here
         const string = `${orderId}|${paymentId}`;
-        const signature = window.btoa(window.crypto.subtle.digest('SHA-256', new TextEncoder().encode(string)));
-
+        const signature = HmacSHA256(string, secret).toString();
+    
         return signature;
     };
 
