@@ -1,190 +1,69 @@
-import React, { useState } from 'react';
-import { HmacSHA256 } from 'crypto-js';
+import React from "react";
 
 const PurchaseButton = () => {
-    const [isDownloaded, setIsDownloaded] = useState(false); // To track if the file has already been downloaded
+  const loadRazorpayScript = () => {
+    return new Promise((resolve) => {
+      if (document.querySelector("#razorpay-script")) return resolve(true);
 
-    // Load the Razorpay SDK script dynamically
-    const loadRazorpay = () => {
-        return new Promise((resolve) => {
-            const script = document.createElement('script');
-            script.src = 'https://checkout.razorpay.com/v1/checkout.js';
-            script.onload = () => resolve(true);
-            script.onerror = () => resolve(false);
-            document.body.appendChild(script);
-        });
-    };
+      const script = document.createElement("script");
+      script.id = "razorpay-script";
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      script.onload = () => resolve(true);
+      script.onerror = () => resolve(false);
+      document.body.appendChild(script);
+    });
+  };
 
-    // Call the backend to create an order and get the order details
-    const createOrder = async (amount) => {
-        try {
-            const response = await fetch('https://razorpay-image-latest.onrender.com/api/razorpaycallback/create-order', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ amount }), // Send amount in paise
-            });
+  const handlePayment = async () => {
+    const scriptLoaded = await loadRazorpayScript();
+    if (!scriptLoaded) {
+      alert("Razorpay SDK failed to load. Are you online?");
+      return;
+    }
 
-            const data = await response.json();
-            if (response.ok) {
-                return data; // Return order details { id, amount, currency }
-            } else {
-                throw new Error(data.error || 'Error creating order');
-            }
-        } catch (error) {
-            alert(`Error: ${error.message}`);
-            return null;
-        }
-    };
+    try {
+      const orderResponse = await fetch("https://localhost:7058/api/razorpaycallback/create-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ amount: 50000 }), // Amount in paise
+      });
 
-    const handlePayment = async () => {
-        const isLoaded = await loadRazorpay();
-        if (!isLoaded) {
-            alert("Razorpay SDK failed to load. Are you online?");
-            return;
-        }
+      const orderData = await orderResponse.json();
 
-        // Amount in paise (e.g., ₹300 = 30000 paise)
-        const amount = 300;
+      const options = {
+        key: "rzp_live_SUq7jMbXhUcfHL", // Replace with your test/live key
+        amount: orderData.amount,
+        currency: "INR",
+        name: "Your Company",
+        description: "Secure Order Verification",
+        order_id: orderData.id,
+        handler: async function () {
+          const verifyRes = await fetch("https://localhost:7058/api/razorpaycallback/check-order-status", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ orderId: orderData.id }),
+          });
 
-        // Create the Razorpay order via backend
-        const order = await createOrder(amount);
+          const result = await verifyRes.json();
+          if (result.status === "paid") {
+            alert("✅ Payment Successful & Verified");
+          } else {
+            alert("❌ Payment not captured.");
+          }
+        },
+        theme: {
+          color: "#3399cc",
+        },
+      };
 
-        if (!order) {
-            return;
-        }
+      const rzp = new window.Razorpay(options);
+      rzp.open();
+    } catch (err) {
+      console.error("Payment init error:", err);
+    }
+  };
 
-        const options = {
-            key: 'rzp_live_SUq7jMbXhUcfHL', // Your Razorpay key
-            amount: order.amount, // Amount in paise
-            currency: order.currency, // Currency, e.g., "INR"
-            order_id: order.id, // Razorpay Order ID from backend
-            name: 'ScreenInsights',
-            description: 'Payment for ScreenInsights subscription',
-            image: '/your-logo.png',
-            handler: function (response) {
-                // 👇 Send a POST request to your backend with all 3 fields
-                fetch("https://razorpay-image-latest.onrender.com/api/razorpaycallback/callback", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        razorpay_order_id: response.razorpay_order_id,
-                        razorpay_payment_id: response.razorpay_payment_id,
-                        razorpay_signature: response.razorpay_signature
-                    })
-                })
-                .then(res => res.json())
-                .then(data => {
-                    console.log("Callback response:", data);
-                    alert("Payment confirmed and callback handled!");
-                    handlePaymentSuccess(response); // Proceed with file download
-                })
-                .catch(err => {
-                    console.error("Callback error:", err);
-                    alert("Callback failed!");
-                });
-            },
-            prefill: {
-                name: 'Your Name',
-                email: 'your-email@example.com',
-                contact: '9999999999',
-            },
-            notes: {
-                address: 'Your Company Address',
-            },
-            theme: {
-                color: '#3399cc',
-            },
-            redirect: false, // Ensure redirect is false
-        };
-
-        // Create payment object using Razorpay
-        const paymentObject = new window.Razorpay(options);
-
-        // Handle failed payment scenario
-        paymentObject.on('payment.failed', function (response) {
-            alert(`Payment failed! Error: ${response.error.description}`);
-            handlePaymentFailure(response);
-        });
-
-        // Open Razorpay payment modal
-        paymentObject.open();
-    };
-
-    // This function handles the successful payment
-    const handlePaymentSuccess = async (response) => {
-        if (!isDownloaded) {
-            console.log('Payment successful, details:', response);
-
-            // Call the backend callback API after payment
-            const callbackResponse = await callCallbackApi(response);
-
-            if (callbackResponse.success) {
-                // Trigger file download after successful payment and callback
-                const sasUrl = 'https://drive.google.com/uc?export=download&id=1_pQiv4x0Vu-x8Y1ehfVqa_colLcbWZga';
-                // Create an anchor element and trigger the download
-                const a = document.createElement('a');
-                a.href = sasUrl;
-                a.download = 'WorkerService.zip'; // Set the file name
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a); // Clean up the DOM element
-
-                setIsDownloaded(true); // Ensure that the file is downloaded only once
-            } else {
-                alert('Payment verification failed.');
-            }
-        }
-    };
-
-    // This function handles the failed payment
-    const handlePaymentFailure = (response) => {
-        console.log('Payment failed, error:', response);
-    };
-
-    // Call the backend callback API with the payment details
-    const callCallbackApi = async (response) => {
-        try {
-            const signature = generateSignature(response.razorpay_order_id, response.razorpay_payment_id);
-
-            const callbackData = {
-                razorpay_order_id: response.razorpay_order_id,
-                razorpay_payment_id: response.razorpay_payment_id,
-                razorpay_signature: signature,
-            };
-
-            const callbackResponse = await fetch('https://razorpay-image-latest.onrender.com/api/razorpaycallback/callback', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(callbackData),
-            });
-
-            const data = await callbackResponse.json();
-            return data;
-        } catch (error) {
-            console.log('Error calling callback API:', error);
-            return { success: false };
-        }
-    };
-
-    const generateSignature = (orderId, paymentId) => {
-        const secret = '2WoX7SjIZ9mrv5f58YM1c8co'; // Use your Razorpay secret here
-        const string = `${orderId}|${paymentId}`;
-        const signature = HmacSHA256(string, secret).toString();
-    
-        return signature;
-    };
-
-    return (
-        <button onClick={handlePayment} className="purchase-button">
-            Purchase Now for ₹300
-        </button>
-    );
+  return <button onClick={handlePayment}>Pay ₹500</button>;
 };
 
 export default PurchaseButton;
