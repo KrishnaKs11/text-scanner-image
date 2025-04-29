@@ -1,11 +1,10 @@
-/* App.css */
 body,
 html {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
+  background-color: #121212;
+  color: #e0e0e0;
 }
 
 .App {
@@ -18,9 +17,10 @@ html {
 
 .key-features {
   padding: 20px;
-  background-color: #007bff;
-  color: white;
+  background-color: rgba(0, 123, 255, 0.3);
+  color: #ffffff;
   text-align: center;
+  backdrop-filter: blur(4px);
 }
 
 .feature-cards {
@@ -32,11 +32,12 @@ html {
 
 .feature-card {
   flex-shrink: 0;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.05);
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
   padding: 20px;
   width: 200px;
+  backdrop-filter: blur(6px);
 }
 
 .container {
@@ -45,15 +46,13 @@ html {
   max-width: 800px;
 }
 
-.left-container {
-  flex: 1;
-  padding: 20px;
-}
-
+.left-container,
 .right-container {
   flex: 1;
   padding: 20px;
-  background-color: #f8f8f8;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  backdrop-filter: blur(8px);
 }
 
 .input-container,
@@ -66,7 +65,7 @@ html {
 }
 
 .input-container.highlighted {
-  background-color: #f0f8ff;
+  background-color: rgba(0, 123, 255, 0.2);
 }
 
 .camera-screen {
@@ -77,12 +76,12 @@ html {
 
 pre {
   text-align: left;
-  background-color: #f8f9fa;
+  background-color: rgba(255, 255, 255, 0.05);
   padding: 20px;
   border-radius: 5px;
-  border: 1px solid #ddd;
+  border: 1px solid #444;
   overflow-x: auto;
-  margin: 0;
+  color: #ccc;
 }
 
 input[type='file'],
@@ -103,7 +102,7 @@ button:hover {
 }
 
 button:disabled {
-  background-color: #cccccc;
+  background-color: #555;
 }
 
 .custom-file-upload {
@@ -127,136 +126,111 @@ input[type='file'] {
 
 .results-container {
   max-width: 100%;
-  /* Ensure it does not exceed the parent's width */
   box-sizing: border-box;
-  /* Include padding and border in width */
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: start;
   padding: 20px;
   max-height: 400px;
-  /* Adjust based on your layout needs */
 }
 
 .results-container pre {
   width: 100%;
   max-width: 100%;
   max-height: 300px;
-  /* Adjust this value based on your needs */
   white-space: pre-wrap;
   word-wrap: break-word;
   overflow-y: auto;
-  /* This will show a scrollbar when the content exceeds 300px in height */
   border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
   scrollbar-width: thin;
-  scrollbar-color: #007bff #f0f0f0;
+  scrollbar-color: #007bff #333;
 }
 
 /* Custom Scrollbar for Chrome, Edge, and Safari */
 .results-container pre::-webkit-scrollbar {
   width: 8px;
-  /* Scrollbar width */
 }
 
 .results-container pre::-webkit-scrollbar-track {
-  background: #f0f0f0;
-  /* Track color */
+  background: #333;
   border-radius: 4px;
-  /* Match the border-radius of the pre tag */
 }
 
 .results-container pre::-webkit-scrollbar-thumb {
   background-color: #007bff;
-  /* Scrollbar thumb color */
   border-radius: 4px;
-  /* Rounded corners on the thumb */
-  border: 3px solid #f0f0f0;
-  /* Creates padding around the thumb */
+  border: 3px solid #333;
 }
-
 
 .results-container.shown {
   opacity: 1;
   transform: translateY(0);
 }
 
-
 /* Feature Cards Container Styles */
 .feature-container {
   display: flex;
   flex-wrap: wrap;
-  /* Allow the container to wrap cards on small screens */
   justify-content: center;
-  /* Center cards within the container */
   gap: 20px;
-  /* Space between cards */
   margin-top: 20px;
-  /* Space above the container */
   margin-bottom: 40px;
-  /* Space below the container */
 }
 
 /* Individual Feature Card Styles */
 .feature-card {
   flex-basis: calc(33.333% - 40px);
-  /* Three cards per row, accounting for gap */
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* Align card content centrally */
   padding: 20px;
-  background-color: #fff;
-  /* Card background color */
+  background-color: rgba(255, 255, 255, 0.05);
   border-radius: 8px;
-  /* Rounded corners for the cards */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  /* Subtle shadow for depth */
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  /* Smooth transition for hover effect */
 }
 
 .feature-card:hover {
   transform: translateY(-5px);
-  /* Slight lift effect on hover */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  /* Increased shadow for lifted effect */
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
 }
 
-/* Feature Card Title and Text Styles */
 .feature-card h3 {
   font-size: 1.25rem;
-  /* Title font size */
-  color: #007bff;
-  /* Title color, matching the app's theme */
+  color: #00aaff;
   margin-bottom: 10px;
-  /* Space below the title */
 }
 
 .feature-card p {
   text-align: center;
-  /* Center-align the text */
-  color: #333;
-  /* Text color for readability */
+  color: #ccc;
 }
 
-/* Responsive Adjustments for Feature Cards */
+/* Responsive Adjustments */
 @media (max-width: 768px) {
   .feature-card {
     flex-basis: calc(50% - 40px);
-    /* Adjust to two cards per row on smaller screens */
+  }
+
+  .input-container,
+  .results-container {
+    width: 100%;
+  }
+
+  .container {
+    flex-direction: column;
+    width: 100%;
+    margin-left: 0;
   }
 }
 
 @media (max-width: 480px) {
   .feature-card {
     flex-basis: 100%;
-    /* Stack cards vertically on very small screens */
   }
 }
-
 
 .icon-button {
   border: none;
@@ -267,67 +241,27 @@ input[type='file'] {
 }
 
 .icon-button i {
-  color: #000;
-  /* Or any color you prefer */
+  color: #eee;
 }
 
 .premium-content {
-  background-color: #f4f4f9;
-  /* Light background to highlight premium content */
-  color: #4a4a4a;
-  /* Dark text for readability */
-  border-left: 5px solid #007bff;
-  /* Blue border on the left for emphasis */
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #e0e0e0;
+  border-left: 5px solid #00aaff;
   padding: 20px;
-  /* Ample padding for a spacious layout */
   margin: 20px 0;
-  /* Margin for separation from other content */
   border-radius: 8px;
-  /* Rounded corners for a modern look */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  /* Subtle shadow for depth */
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
 }
 
 .premium-content h2 {
-  color: #007bff;
-  /* Blue text for headers to match the border */
+  color: #00aaff;
   margin-top: 0;
-  /* Remove top margin for the header */
 }
 
 .premium-content p {
   font-size: 1rem;
-  /* Standard font size for body text */
   line-height: 1.6;
-  /* Increased line height for readability */
   margin: 10px 0;
-  /* Margin for paragraph separation */
-}
-
-
-
-@media (max-width: 768px) {
-  .feature-card {
-    flex-basis: calc(50% - 20px);
-  }
-
-  .input-container,
-  .results-container {
-    width: 100%;
-  }
-
-  .container {
-    display: flex;
-    width: 100%;
-    max-width: 800px;
-    flex-direction: column;
-    width: 522%;
-    margin-left: 60%;
-  }
-}
-
-@media (max-width: 480px) {
-  .feature-card {
-    flex-basis: 100%;
-  }
 }

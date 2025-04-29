@@ -1,16 +1,32 @@
 {
   "name": "theftscanner",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "private": false,
+  "description": "AI-powered text scanner from images with OCR and intelligent response",
+  "author": "KrishnaKs11",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KrishnaKs11/text-scanner-image.git"
+  },
+  "homepage": "https://text-scanner-image.onrender.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KrishnaKs11/text-scanner-image/issues"
+  },
   "dependencies": {
     "@craco/craco": "^7.1.0",
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@mui/icons-material": "^6.1.4",
+    "@mui/material": "^6.1.4",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "assert": "^2.1.0",
     "axios": "^1.6.8",
     "browserify-zlib": "^0.2.0",
+    "crypto-js": "^4.2.0",
     "https-browserify": "^1.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -26,7 +42,9 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -45,5 +63,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
 }

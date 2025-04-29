@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './HeaderComponent.css';
-import logophotoscanner from './Assets/logophotoscanner.png';
+import logophotoscanner from './Assets/hackimg.jpg';
 
 const AboutModal = ({ isOpen, closeModal, children }) => {
   if (!isOpen) return null;
@@ -39,20 +39,23 @@ const HeaderComponent = () => {
 
       <AboutModal isOpen={isAboutModalOpen} closeModal={closeAboutModal}>
         <div className="modalHeader">
-          <h2>App Use Cases</h2>
+          <h2>ScreenInsights Use Cases</h2>
         </div>
         <p>This app can be utilized in various scenarios, including but not limited to:</p>
         <ul className="modalList">
-          <li>Helping visually impaired individuals understand written content by converting notes to audio.</li>
-          <li>Assisting content creators in generating captions and extracting text from images for better accessibility.</li>
-          <li>And many more innovative applications tailored to your needs.</li>
+          <li>Enhances productivity by delivering real-time AI insights exclusively on Windows machines.</li>
+          <li>Seamlessly integrates with Windows-based applications like WhatsApp, Microsoft Teams, and more.</li>
+          <li>Provides instant screen content analysis with a quick press of <strong>Ctrl + \</strong> (Windows only).</li>
+          <li>Optimizes your workflow using smart, context-aware suggestions tailored to Windows environments.</li>
+          <li>Designed specifically for Windows users to experience efficient, AI-powered assistance at work.</li>
         </ul>
         <div className="Contact-info">
           <h3>Operational Address:</h3>
-          Contact Mail: krishnabasavarajks@hmail.com
+          Contact Mail: krishnabasavarajks@gmail.com<br />
           Contact No: 9325729983
         </div>
       </AboutModal>
+
     </div>
   );
 }
