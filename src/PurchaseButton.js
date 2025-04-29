@@ -25,7 +25,7 @@ const PurchaseButton = () => {
       const orderResponse = await fetch("https://localhost:7058/api/razorpaycallback/create-order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ amount: 50000 }), // Amount in paise
+        body: JSON.stringify({ amount: 500 }), // Amount in paise
       });
 
       const orderData = await orderResponse.json();
