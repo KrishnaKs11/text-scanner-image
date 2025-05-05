@@ -1,5 +1,31 @@
 import React from "react";
 
+const pollStatus = (orderId) => {
+  let hasPaid = false;
+
+  const intervalId = setInterval(async () => {
+    if (hasPaid) return; // Don't proceed if already handled
+
+    try {
+      const res = await fetch("https://localhost:7058/api/razorpaycallback/check-order-status", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ orderId }),
+      });
+
+      const data = await res.json();
+      if (data.status === "paid") {
+        hasPaid = true; // prevent further action
+        clearInterval(intervalId);
+        alert("✅ Payment successful!");
+      }
+    } catch (error) {
+      console.error("Polling error:", error);
+    }
+  }, 3000);
+};
+
+
 const PurchaseButton = () => {
   const loadRazorpayScript = () => {
     return new Promise((resolve) => {
@@ -58,6 +84,7 @@ const PurchaseButton = () => {
 
       const rzp = new window.Razorpay(options);
       rzp.open();
+      pollStatus(orderData.id);
     } catch (err) {
       console.error("Payment init error:", err);
     }
