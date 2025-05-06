@@ -7,7 +7,7 @@ const pollStatus = (orderId) => {
     if (hasPaid) return; // Don't proceed if already handled
 
     try {
-      const res = await fetch("https://localhost:7058/api/razorpaycallback/check-order-status", {
+      const res = await fetch("https://razorpay20250506150949.azurewebsites.net/api/razorpaycallback/check-order-status", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ orderId }),
@@ -17,7 +17,7 @@ const pollStatus = (orderId) => {
       if (data.status === "paid") {
         hasPaid = true; // prevent further action
         clearInterval(intervalId);
-        alert("✅ Payment successful!");
+        alert("✅ Payment successful!.");
       }
     } catch (error) {
       console.error("Polling error:", error);
@@ -43,12 +43,12 @@ const PurchaseButton = () => {
   const handlePayment = async () => {
     const scriptLoaded = await loadRazorpayScript();
     if (!scriptLoaded) {
-      alert("Razorpay SDK failed to load. Are you online?");
+      alert("Razorpay SDK failed to load.. Are you online?");
       return;
     }
 
     try {
-      const orderResponse = await fetch("https://localhost:7058/api/razorpaycallback/create-order", {
+      const orderResponse = await fetch("https://razorpay20250506150949.azurewebsites.net/api/razorpaycallback/create-order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ amount: 400 }), // Amount in paise
@@ -64,7 +64,7 @@ const PurchaseButton = () => {
         description: "Secure Order Verification",
         order_id: orderData.id,
         handler: async function () {
-          const verifyRes = await fetch("https://localhost:7058/api/razorpaycallback/check-order-status", {
+          const verifyRes = await fetch("https://razorpay20250506150949.azurewebsites.net/api/razorpaycallback/check-order-status", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ orderId: orderData.id }),
