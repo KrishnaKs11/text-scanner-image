@@ -33,9 +33,6 @@ const HeaderComponent = () => {
           <li><a href="mailto:photoScanner.customerCare@gmail.com?subject=Contact%20PhotoScanner%20Support">Contact</a></li>
         </ul>
       </div>
-      <div className="user-actions">
-        <button>Login</button>
-      </div>
 
       <AboutModal isOpen={isAboutModalOpen} closeModal={closeAboutModal}>
         <div className="modalHeader">
@@ -55,7 +52,6 @@ const HeaderComponent = () => {
           Contact No: 9325729983
         </div>
       </AboutModal>
-
     </div>
   );
 }
