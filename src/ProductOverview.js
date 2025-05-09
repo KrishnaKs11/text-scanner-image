@@ -45,6 +45,10 @@ const ProductOverview = () => {
         <div className="text-content">
           <h1>StealthAIOverlay — AI Fraud Detect</h1>
           <p className="intro-text">
+            Empower your hiring process with real-time AI fraud detection and analytics.
+            StealthAIOverlay ensures integrity in every interview.
+          </p>
+          <p className="intro-text">
             Combat AI-assisted interview fraud with StealthAIOverlay. Our solution detects and exposes hidden AI overlays used by candidates during interviews, ensuring integrity in your hiring process.
           </p>
           <div className="features-grid">
