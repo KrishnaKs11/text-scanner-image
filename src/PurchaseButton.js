@@ -15,16 +15,24 @@ const pollStatus = (orderId) => {
 
       const data = await res.json();
       if (data.status === "paid") {
-        hasPaid = true; // prevent further action
+        hasPaid = true;
         clearInterval(intervalId);
-        alert("✅ Payment successful!.");
+        alert("✅ Payment successful!");
+
+        // Trigger download
+        const downloadUrl = "https://drive.google.com/uc?export=download&id=1_pQiv4x0Vu-x8Y1ehfVqa_colLcbWZga";
+        const link = document.createElement("a");
+        link.href = downloadUrl;
+        link.download = "Your_File.pdf"; // You can name it accordingly
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
       }
     } catch (error) {
       console.error("Polling error:", error);
     }
   }, 3000);
 };
-
 
 const PurchaseButton = () => {
   const loadRazorpayScript = () => {
@@ -57,7 +65,7 @@ const PurchaseButton = () => {
       const orderData = await orderResponse.json();
 
       const options = {
-        key: "rzp_live_SUq7jMbXhUcfHL", // Replace with your test/live key
+        key: "rzp_live_SUq7jMbXhUcfHL",
         amount: orderData.amount,
         currency: "INR",
         name: "Your Company",
@@ -73,6 +81,15 @@ const PurchaseButton = () => {
           const result = await verifyRes.json();
           if (result.status === "paid") {
             alert("✅ Payment Successful & Verified");
+
+            // Trigger download after direct verification
+            const downloadUrl = "https://drive.google.com/uc?export=download&id=1_pQiv4x0Vu-x8Y1ehfVqa_colLcbWZga";
+            const link = document.createElement("a");
+            link.href = downloadUrl;
+            link.download = "Your_File.pdf";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
           } else {
             alert("❌ Payment not captured.");
           }
@@ -84,7 +101,7 @@ const PurchaseButton = () => {
 
       const rzp = new window.Razorpay(options);
       rzp.open();
-      pollStatus(orderData.id);
+      pollStatus(orderData.id); // fallback polling
     } catch (err) {
       console.error("Payment init error:", err);
     }
