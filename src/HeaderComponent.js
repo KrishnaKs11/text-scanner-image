@@ -22,17 +22,21 @@ const HeaderComponent = () => {
   const closeAboutModal = () => setIsAboutModalOpen(false);
 
   return (
-    <div className="header">
-      <div className="logo">
-        <img src={logophotoscanner} alt="Logo" />
+    <>
+      <div className="header slide-down">
+        <div className="logo">
+          <img src={logophotoscanner} alt="Logo" />
+        </div>
+        <nav className="navigation">
+          <ul>
+            <li><a href="#!" onClick={(e) => e.preventDefault()}>Home</a></li>
+            <li><a href="#!" onClick={(e) => { e.preventDefault(); openAboutModal(); }}>About</a></li>
+            <li><a href="mailto:photoScanner.customerCare@gmail.com?subject=Contact%20PhotoScanner%20Support">Contact</a></li>
+          </ul>
+        </nav>
       </div>
-      <div className="navigation">
-        <ul>
-          <li><a href="#!" onClick={(e) => e.preventDefault()}>Home</a></li>
-          <li><a href="#!" onClick={(e) => { e.preventDefault(); openAboutModal(); }}>About</a></li>
-          <li><a href="mailto:photoScanner.customerCare@gmail.com?subject=Contact%20PhotoScanner%20Support">Contact</a></li>
-        </ul>
-      </div>
+
+      <div className="header-spacer" /> {/* Prevent overlap with body */}
 
       <AboutModal isOpen={isAboutModalOpen} closeModal={closeAboutModal}>
         <div className="modalHeader">
@@ -52,7 +56,7 @@ const HeaderComponent = () => {
           Contact No: 9325729983
         </div>
       </AboutModal>
-    </div>
+    </>
   );
 }
 
