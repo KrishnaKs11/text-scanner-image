@@ -1,0 +1,63 @@
+
+
+.text-cards-wrapper {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+  width: 100%;
+  justify-content: center;
+  scroll-behavior: smooth;
+}
+
+.text-card {
+  min-width: 280px;
+  background: rgba(45, 45, 65, 0.9);
+  border-radius: 12px;
+  padding: 18px;
+  scroll-snap-align: center;
+  box-shadow: 0 4px 20px rgba(0, 255, 255, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #e0f7ff;
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+  line-height: 1.4;
+  backdrop-filter: blur(6px);
+}
+
+.text-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 255, 255, 0.2);
+}
+
+.purchase-section {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .text-slider-container {
+    padding: 15px;
+  }
+
+  .text-cards-wrapper {
+    gap: 12px;
+    margin-bottom: 15px;
+  }
+
+  .text-card {
+    min-width: 240px;
+    font-size: 0.95rem;
+    padding: 16px;
+  }
+
+  .purchase-section {
+    flex-direction: column;
+    align-items: center;
+  }
+}
