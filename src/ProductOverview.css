@@ -61,16 +61,63 @@ main {
 
 /* === HEADINGS === */
 h1, .highlight-title {
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: 900;
   color: transparent;
-  background: linear-gradient(90deg, #00ffcc, #00f0ff, #ff00cc);
+  background: linear-gradient(90deg, #00ffcc, #00f0ff, #ff00cc, #ff00ff); /* More vibrant gradient */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: neonText 2s ease-in-out infinite alternate;
+  animation: neonText 5s ease-in-out infinite alternate, glowPulse 4s ease-in-out infinite alternate; /* Slower animations */
   text-align: center;
   margin-bottom: 20px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-shadow: 
+    0 0 3px rgba(0, 255, 204, 0.5), /* Glowing teal */
+    0 0 6px rgba(0, 240, 255, 0.4), /* Glowing blue */
+    0 0 8px rgba(255, 0, 204, 0.3), /* Glowing pink */
+    0 0 12px rgba(0, 255, 255, 0.4); /* Bright glowing border */
+  transition: text-shadow 1s ease, transform 1s ease; /* Slower transition */
 }
+
+/* Neon text effect */
+@keyframes neonText {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Pulsing glow effect */
+@keyframes glowPulse {
+  0% {
+    text-shadow: 
+      0 0 3px rgba(0, 255, 204, 0.5), 
+      0 0 6px rgba(0, 240, 255, 0.4), 
+      0 0 8px rgba(255, 0, 204, 0.3), 
+      0 0 12px rgba(0, 255, 255, 0.4); /* Soft glow */
+    transform: scale(1);
+  }
+  50% {
+    text-shadow: 
+      0 0 6px rgba(0, 255, 204, 0.7), 
+      0 0 12px rgba(0, 240, 255, 0.6), 
+      0 0 18px rgba(255, 0, 204, 0.5), 
+      0 0 25px rgba(0, 255, 255, 0.6); /* Stronger glow */
+    transform: scale(1.05); /* Slightly bigger scale */
+  }
+  100% {
+    text-shadow: 
+      0 0 3px rgba(0, 255, 204, 0.5), 
+      0 0 6px rgba(0, 240, 255, 0.4), 
+      0 0 8px rgba(255, 0, 204, 0.3), 
+      0 0 12px rgba(0, 255, 255, 0.4);
+    transform: scale(1);
+  }
+}
+
 
 .highlight-title {
   font-size: 2.2rem;
