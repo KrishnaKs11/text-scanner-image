@@ -328,3 +328,105 @@ footer {
   box-shadow: 0 -2px 10px rgba(0, 255, 200, 0.05);
   z-index: 3;
 }
+
+
+/* Add these at the bottom of your ProductOverview.css */
+
+.zoomed-image-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.zoomed-image-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+/* Make Purchase Button more prominent */
+.purchase-button {
+  font-size: 1.2rem;
+  padding: 1rem 2rem;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.purchase-button:hover {
+  background-color: #0056b3;
+}
+.purchase-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  padding: 20px;
+  border-radius: 20px;
+  background: radial-gradient(circle at center, rgba(0, 255, 204, 0.1), transparent);
+  box-shadow: 
+    0 0 15px rgba(0, 255, 153, 0.2),
+    inset 0 0 10px rgba(0, 255, 204, 0.05);
+  animation: pulseContainer 6s ease-in-out infinite;
+}
+
+.purchase-button-container button {
+  font-size: 1.5rem;
+  padding: 16px 40px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #00ffc3, #00b2ff);
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 10px #00ffc3, 0 0 20px #00b2ff;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.purchase-button-container button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #00ffc3, 0 0 40px #00b2ff;
+}
+
+/* Optional subtle glow pulse for container */
+@keyframes pulseContainer {
+  0% {
+    box-shadow:
+      0 0 15px rgba(0, 255, 153, 0.2),
+      inset 0 0 10px rgba(0, 255, 204, 0.05);
+  }
+  50% {
+    box-shadow:
+      0 0 30px rgba(0, 255, 204, 0.3),
+      inset 0 0 20px rgba(0, 255, 153, 0.1);
+  }
+  100% {
+    box-shadow:
+      0 0 15px rgba(0, 255, 153, 0.2),
+      inset 0 0 10px rgba(0, 255, 204, 0.05);
+  }
+}

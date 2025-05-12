@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './ProductOverview.css';
-import productScreenshot from './Assets/chatAi.jpg';
+import productScreenshot from './Assets/FraudExposer.png';
 import PurchaseButton from './PurchaseButton';
-
+import TextSlider from './TextSlider';
 
 const ProductOverview = () => {
   const [reviews, setReviews] = useState([
@@ -21,6 +21,7 @@ const ProductOverview = () => {
   const [name, setName] = useState('');
   const [rating, setRating] = useState(5);
   const [comment, setComment] = useState('');
+  const [isZoomed, setIsZoomed] = useState(false);
 
   const handleReviewSubmit = (e) => {
     e.preventDefault();
@@ -64,12 +65,31 @@ const ProductOverview = () => {
             ))}
           </div>
         </div>
-
         <div className="image-content">
-          <img src={productScreenshot} alt="StealthAIOverlay Screenshot" className="product-screenshot" />
-          <PurchaseButton />
+          <img
+            src={productScreenshot}
+            alt="StealthAIOverlay Screenshot"
+            className="product-screenshot"
+            onClick={() => setIsZoomed(true)}
+          />
+          <div className="purchase-button-container">
+            <PurchaseButton />
+          </div>
         </div>
+        <div>
+          <TextSlider />
+        </div>
+
+
+
       </div>
+
+      {isZoomed && (
+        <div className="zoom-overlay" onClick={() => setIsZoomed(false)}>
+          <img src={productScreenshot} alt="Zoomed Screenshot" className="zoomed-image" />
+          <button className="close-zoom">✖</button>
+        </div>
+      )}
 
       <div className="reviews-section">
         <h2>🧑‍💼 Trusted by Recruiters</h2>
