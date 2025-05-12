@@ -59,7 +59,7 @@ const PurchaseButton = () => {
       const orderResponse = await fetch("https://razorpay20250506150949.azurewebsites.net/api/razorpaycallback/create-order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ amount: 400 }),
+        body: JSON.stringify({ amount: 50000 }),
       });
 
       const orderData = await orderResponse.json();
