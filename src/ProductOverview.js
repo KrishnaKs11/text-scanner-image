@@ -3,6 +3,7 @@ import './ProductOverview.css';
 import productScreenshot from './Assets/FraudExposer.png';
 import PurchaseButton from './PurchaseButton';
 import TextSlider from './TextSlider';
+import VideoPlayer from './VideoPlayer'; 
 
 const ProductOverview = () => {
   const [reviews, setReviews] = useState([
@@ -79,7 +80,9 @@ const ProductOverview = () => {
         <div>
           <TextSlider />
         </div>
-
+        <div className="video-player-container">
+          <VideoPlayer />
+        </div>
 
 
       </div>
