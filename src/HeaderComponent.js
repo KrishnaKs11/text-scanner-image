@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './HeaderComponent.css';
-import logophotoscanner from './Assets/hackimg.jpg';
+import logophotoscanner from './Assets/aifrauddetectlogo.png';
 
 const AboutModal = ({ isOpen, closeModal, children }) => {
   if (!isOpen) return null;
