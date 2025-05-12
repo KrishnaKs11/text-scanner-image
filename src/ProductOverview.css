@@ -1,4 +1,4 @@
-/* RESET + HYBRID DARK THEME */
+/* === RESET & BASE === */
 body {
   margin: 0;
   font-family: 'Orbitron', 'Courier New', Courier, monospace;
@@ -10,12 +10,11 @@ body {
   flex-direction: column;
 }
 
-/* Maintain sticky footer */
 main {
   flex: 1;
 }
 
-/* PRODUCT OVERVIEW */
+/* === PRODUCT OVERVIEW === */
 .product-overview {
   display: flex;
   flex-direction: column;
@@ -51,8 +50,8 @@ main {
 .overview-content {
   display: flex;
   flex-direction: column;
-  align-items: center; /* centers items horizontally */
-  justify-content: center; /* centers items vertically if needed */
+  align-items: center;
+  justify-content: center;
   gap: 30px;
   width: 100%;
   max-width: 1100px;
@@ -60,8 +59,7 @@ main {
   text-align: center;
 }
 
-
-/* HEADINGS */
+/* === HEADINGS === */
 h1, .highlight-title {
   font-size: 3rem;
   font-weight: 900;
@@ -88,7 +86,7 @@ h1, .highlight-title {
   }
 }
 
-/* TEXT SECTIONS */
+/* === INTRO TEXT === */
 .intro-text {
   font-size: 1.2rem;
   color: #aaffcc;
@@ -100,7 +98,7 @@ h1, .highlight-title {
   box-shadow: 0 0 12px rgba(0,255,255,0.08);
 }
 
-/* IMAGE SECTION */
+/* === IMAGE SECTION === */
 .image-content {
   text-align: center;
   max-width: 50%;
@@ -118,7 +116,7 @@ h1, .highlight-title {
   box-shadow: 0 0 60px rgba(255, 0, 255, 0.4);
 }
 
-/* FEATURES GRID */
+/* === FEATURES GRID === */
 .features-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -160,7 +158,7 @@ h1, .highlight-title {
   font-size: 1rem;
 }
 
-/* CTA BUTTON */
+/* === CALL TO ACTION BUTTON === */
 .purchase-button {
   background-color: #00ffcc;
   color: #000;
@@ -180,7 +178,7 @@ h1, .highlight-title {
   box-shadow: 0 0 30px rgba(0, 255, 255, 0.7);
 }
 
-/* REVIEWS */
+/* === REVIEWS SECTION === */
 .reviews-section {
   width: 100%;
   max-width: 1000px;
@@ -219,7 +217,7 @@ h1, .highlight-title {
   margin-top: 10px;
 }
 
-/* REVIEW FORM */
+/* === REVIEW FORM === */
 .review-form-container {
   background: rgba(255, 255, 255, 0.03);
   padding: 30px;
@@ -273,7 +271,7 @@ h1, .highlight-title {
   box-shadow: 0 0 25px rgba(0, 255, 255, 0.7);
 }
 
-/* FOOTER */
+/* === FOOTER === */
 footer {
   background: #111;
   padding: 20px;
