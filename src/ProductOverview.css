@@ -99,17 +99,18 @@ main {
 }
 
 h1, .highlight-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 4rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 3.8rem;
   font-weight: 700;
-  color: #dce1e7;
+  color: #0c0c0c; /* a calm, strong blue */
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   letter-spacing: 3px;
   text-transform: uppercase;
+  text-shadow: 0 2px 4px rgba(13, 228, 189, 0.9);
   text-shadow:
-    0 0 8px rgba(25, 33, 180, 0.7),
-    0 0 15px rgba(51, 153, 255, 0.5);
+    0 0 8px rgba(48, 48, 56, 0.7),
+    0 0 15px rgba(226, 229, 231, 0.5);
 
   position: relative;
   display: inline-block;
