@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ProductOverview.css';
 import productScreenshot from './Assets/FraudExposer.png';
 import PurchaseButton from './PurchaseButton';
@@ -42,6 +42,24 @@ const ProductOverview = () => {
     { icon: '📊', title: 'Live Dashboard (Coming Soon)', description: 'Track AI detection stats and candidate behavior analytics.' },
   ];
 
+  // Cursor animation effect
+  useEffect(() => {
+    const cursor = document.createElement('div');
+    cursor.className = 'cursor-animation';
+    document.body.appendChild(cursor);
+
+    const moveCursor = (e) => {
+      cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+    };
+
+    document.addEventListener('mousemove', moveCursor);
+
+    return () => {
+      document.removeEventListener('mousemove', moveCursor);
+      document.body.removeChild(cursor);
+    };
+  }, []);
+
   return (
     <div className="product-overview">
       <div className="overview-content">
@@ -83,14 +101,12 @@ const ProductOverview = () => {
         <div className="video-player-container">
           <VideoPlayer />
         </div>
-
-
       </div>
 
       {isZoomed && (
-        <div className="zoom-overlay" onClick={() => setIsZoomed(false)}>
+        <div className="zoomed-image-overlay" onClick={() => setIsZoomed(false)}>
           <img src={productScreenshot} alt="Zoomed Screenshot" className="zoomed-image" />
-          <button className="close-zoom">✖</button>
+          <button className="close-button">✖</button>
         </div>
       )}
 
