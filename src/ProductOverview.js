@@ -10,12 +10,12 @@ const ProductOverview = () => {
     {
       name: 'Ravi Sharma',
       rating: 5,
-      comment: 'StealthAIOverlay exposed a candidate using hidden AI assistance. A must-have for any recruitment team!',
+      comment: 'InterviewGuard AI exposed a candidate using hidden AI assistance. A must-have for any recruitment team!',
     },
     {
       name: 'Priya Mehta',
       rating: 5,
-      comment: 'We caught multiple frauds using InterviewCoder tools. This software is a game-changer.',
+      comment: 'We caught multiple frauds using InterviewGuard AI tools. This software is a game-changer.',
     },
   ]);
 
@@ -35,11 +35,11 @@ const ProductOverview = () => {
 
   const features = [
     { icon: '🛡️', title: 'AI Fraud Detection', description: 'Identifies hidden AI overlays like InterviewCoder and exposes them in real-time.' },
-    { icon: '🖥️', title: 'StealthAIOverlay Installer', description: 'Deploys a background service to scan and reveal unauthorized AI helpers.' },
-    { icon: '⚡', title: 'One-Click Exposure', description: 'Highlights the cheater’s hidden overlay window live during the interview.' },
-    { icon: '🧠', title: 'Anti-AI Intelligence', description: 'Detects GPT-based prompts and behavioral clues from fraudulent apps.' },
-    { icon: '🏢', title: 'Enterprise Grade', description: 'Built for Fortune 500 hiring teams to eliminate AI-fueled cheating.' },
-    { icon: '📊', title: 'Live Dashboard (Coming Soon)', description: 'Track AI detection stats and candidate behavior analytics.' },
+    { icon: '🖥️', title: 'Background Scanner', description: 'Runs as a silent background service to detect unauthorized AI helpers during interviews.' },
+    { icon: '⚡', title: 'One-Click Exposure', description: 'Instantly highlights any suspicious AI overlay windows live during interviews.' },
+    { icon: '🧠', title: 'Behavioral AI Intelligence', description: 'Detects GPT-based prompts and behavioral clues from fraudulent applications.' },
+    { icon: '🏢', title: 'Enterprise Ready', description: 'Designed for Fortune 500 hiring teams to maintain interview integrity at scale.' },
+    { icon: '📊', title: 'Live Analytics Dashboard (Coming Soon)', description: 'Monitor AI detection stats and candidate behavior insights in real time.' },
   ];
 
   // Cursor animation effect
@@ -64,13 +64,12 @@ const ProductOverview = () => {
     <div className="product-overview">
       <div className="overview-content">
         <div className="text-content">
-          <h1>StealthAIOverlay — AI Fraud Detect</h1>
+          <h1>InterviewGuard AI — Advanced AI Interview Fraud Detection</h1>
           <p className="intro-text">
-            Empower your hiring process with real-time AI fraud detection and analytics.
-            StealthAIOverlay ensures integrity in every interview.
+            Protect your hiring process with InterviewGuard AI’s real-time fraud detection and behavioral analytics.
           </p>
           <p className="intro-text">
-            Combat AI-assisted interview fraud with StealthAIOverlay. Our solution detects and exposes hidden AI overlays used by candidates during interviews, ensuring integrity in your hiring process.
+            Detect and expose hidden AI overlays used by candidates during interviews, ensuring a fair and transparent recruitment process.
           </p>
           <div className="features-grid">
             {features.map((feature, index) => (
@@ -87,7 +86,7 @@ const ProductOverview = () => {
         <div className="image-content">
           <img
             src={productScreenshot}
-            alt="StealthAIOverlay Screenshot"
+            alt="InterviewGuard AI Screenshot"
             className="product-screenshot"
             onClick={() => setIsZoomed(true)}
           />
@@ -111,7 +110,7 @@ const ProductOverview = () => {
       )}
 
       <div className="reviews-section">
-        <h2>🧑‍💼 Trusted by Recruiters</h2>
+        <h2>🧑‍💼 Trusted by Recruitment Professionals</h2>
         <div className="reviews-list">
           {reviews.map((review, index) => (
             <div key={index} className="review-card">
