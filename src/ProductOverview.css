@@ -198,20 +198,53 @@ h1:hover, .highlight-title:hover {
   color: #c8d4f2;
   font-size: 0.95rem;
 }
+.purchase-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+}
+
+.purchase-button {
+  padding: 14px 32px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #ffffff;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(0, 204, 255, 0.6);
+  transition: all 0.4s ease;
+}
+
+.purchase-button:hover {
+  background: linear-gradient(135deg, #00f2ff, #004cff);
+  box-shadow: 0 0 40px rgba(0, 204, 255, 0.9);
+  transform: scale(1.05);
+}
 
 /* === CALL TO ACTION BUTTON === */
 .purchase-button {
-  background-color: #3399ff;
+ display: inline-block;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
   color: #ffffff;
-  font-weight: 700;
-  font-size: 1.15rem;
-  padding: 14px 30px;
+  background: rgba(51, 153, 255, 0.2);
+  border: 1px solid rgba(51, 153, 255, 0.6);
   border-radius: 10px;
-  border: none;
-  box-shadow: 0 0 30px rgba(51, 153, 255, 0.6);
-  transition: all 0.4s ease;
-  z-index: 4;
   cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 20px rgba(51, 153, 255, 0.4);
+  transition: all 0.4s ease;
 }
 
 .purchase-button:hover {
