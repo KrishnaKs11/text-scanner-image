@@ -98,21 +98,69 @@ main {
   text-align: center;
 }
 
-/* === HEADINGS === */
 h1, .highlight-title {
   font-size: 3.5rem;
   font-weight: 700;
-  color: #000000;
+  color: #dce1e7;
   text-align: center;
   margin-bottom: 15px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  text-shadow: 0 0 8px rgba(25, 33, 180, 0.7), 0 0 15px rgba(51, 153, 255, 0.5);
-  transition: text-shadow 0.6s ease;
+
+  text-shadow:
+    0 0 8px rgba(25, 33, 180, 0.7),
+    0 0 15px rgba(51, 153, 255, 0.5);
+
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  transition: all 0.6s ease;
+  z-index: 1;  /* keep text on top */
 }
 
-h1:hover, .highlight-title:hover {
-  text-shadow: 0 0 15px rgba(51, 153, 255, 1), 0 0 30px rgba(51, 153, 255, 0.8);
+h1::after, .highlight-title::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -20%;
+  height: 130px;
+  width: 130px;
+
+  background-image: url('./Assets/lock.png'); /* Swap if needed */
+  background-repeat: no-repeat;
+  background-size: 120%;          /* zoom in a bit */
+  background-position: center;
+
+  opacity: 0.3;                  /* little transparent */
+  border-radius: 50%;
+
+  /* Double dark blue circular border */
+  border: 2px solid #0b1e61;    /* dark blue */
+  box-shadow:
+    0 0 10px 2px rgba(25, 33, 180, 0.3),
+    0 0 20px 4px rgba(51, 153, 255, 0.2),
+    0 0 0 3px #0b1e61,
+    0 0 0 5px #142a82;
+
+  /* Keep image straight */
+  transform: translateY(-50%);
+  transform-style: flat;
+  backface-visibility: hidden;
+  will-change: left;
+
+  animation: glowSweep 12s linear infinite;
+  pointer-events: none;
+
+  z-index: 0;  /* behind text */
+}
+
+@keyframes glowSweep {
+  0% {
+    left: -20%;
+  }
+  100% {
+    left: 120%;
+  }
 }
 
 /* === INTRO TEXT === */
@@ -198,6 +246,8 @@ h1:hover, .highlight-title:hover {
   color: #c8d4f2;
   font-size: 0.95rem;
 }
+
+/* === PURCHASE BUTTON CONTAINER & BUTTON === */
 .purchase-button-container {
   display: flex;
   justify-content: center;
@@ -215,144 +265,163 @@ h1:hover, .highlight-title:hover {
   font-size: 1.1rem;
   font-weight: bold;
   color: #ffffff;
-  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  background: linear-gradient(135deg, #2196f3, #3f51b5);
   border: none;
-  border-radius: 12px;
+  border-radius: 50px;
   cursor: pointer;
-  box-shadow: 0 0 20px rgba(0, 204, 255, 0.6);
-  transition: all 0.4s ease;
+  box-shadow:
+    0 0 10px #2196f3,
+    0 0 20px #3f51b5;
+  transition: all 0.3s ease;
+  user-select: none;
+  text-shadow: 0 0 5px rgba(33, 150, 243, 0.8);
+  outline-offset: 3px;
 }
 
 .purchase-button:hover {
-  background: linear-gradient(135deg, #00f2ff, #004cff);
-  box-shadow: 0 0 40px rgba(0, 204, 255, 0.9);
-  transform: scale(1.05);
+  background: linear-gradient(135deg, #64b5f6, #7986cb);
+  box-shadow:
+    0 0 18px #64b5f6,
+    0 0 38px #7986cb;
 }
 
-/* === CALL TO ACTION BUTTON === */
-.purchase-button {
- display: inline-block;
-  padding: 12px 24px;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #ffffff;
-  background: rgba(51, 153, 255, 0.2);
-  border: 1px solid rgba(51, 153, 255, 0.6);
-  border-radius: 10px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  backdrop-filter: blur(5px);
-  box-shadow: 0 0 20px rgba(51, 153, 255, 0.4);
-  transition: all 0.4s ease;
-}
-
-.purchase-button:hover {
-  background-color: #1a75ff;
-  transform: scale(1.08);
-  box-shadow: 0 0 40px rgba(51, 153, 255, 0.9);
+.purchase-button:active {
+  transform: scale(0.97);
 }
 
 /* === REVIEWS SECTION === */
 .reviews-section {
+  margin-top: 60px;
   width: 100%;
   max-width: 900px;
-  margin-top: 45px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 25px 20px;
+  background: rgba(10, 10, 10, 0.7);
+  border-radius: 14px;
+  box-shadow: 0 0 30px rgba(51, 153, 255, 0.35);
   z-index: 4;
 }
 
+.reviews-section h2 {
+  font-size: 2rem;
+  color: #a3b9f9;
+  margin-bottom: 20px;
+  text-align: center;
+  text-shadow: 0 0 12px rgba(51, 153, 255, 0.5);
+}
+
+/* === REVIEW CARDS === */
 .review-card {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(51, 153, 255, 0.12);
-  padding: 25px;
-  border-radius: 14px;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 0 20px rgba(51, 153, 255, 0.1);
-  transition: all 0.4s ease;
+  background: rgba(40, 40, 40, 0.6);
+  border: 1px solid #2062ff;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 20px rgba(32, 98, 255, 0.45);
+  transition: background 0.3s ease;
 }
 
 .review-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 0 40px rgba(51, 153, 255, 0.2);
+  background: rgba(32, 98, 255, 0.25);
 }
 
-.review-name {
-  font-weight: 700;
-  color: #3399ff;
-  font-size: 1.3rem;
+.review-author {
+  font-weight: bold;
+  color: #c0d2ff;
+  margin-bottom: 8px;
 }
 
-.review-rating {
-  color: #ffe84d;
-  margin-left: 12px;
-  filter: drop-shadow(0 0 3px #ffe84d);
-}
-
-.review-comment {
+.review-text {
+  font-style: italic;
   color: #e0e8ff;
-  margin-top: 12px;
-  font-size: 1rem;
+  line-height: 1.4;
 }
 
 /* === REVIEW FORM === */
-.review-form-container {
-  background: rgba(255, 255, 255, 0.015);
-  padding: 28px;
-  border-radius: 18px;
-  margin-top: 45px;
-  box-shadow: 0 0 30px rgba(51, 153, 255, 0.12);
-  backdrop-filter: blur(10px);
+.review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 30px;
 }
 
-.review-form h3 {
-  color: #ffffff;
-  font-size: 1.6rem;
-  margin-bottom: 20px;
-  text-shadow: 0 0 5px rgba(51, 153, 255, 0.6);
+.review-form label {
+  font-weight: 600;
+  color: #9fbffb;
 }
 
 .review-form input,
-.review-form select,
 .review-form textarea {
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.45);
-  border: 1px solid #3399ff;
-  color: #d0e2ff;
-  padding: 12px 14px;
-  margin-bottom: 14px;
-  border-radius: 10px;
-  font-size: 1.05rem;
-  transition: box-shadow 0.3s ease;
+  background: rgba(30, 30, 30, 0.5);
+  border: 1px solid #4d7bd8;
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: #d1dbff;
+  font-size: 1rem;
+  outline-offset: 3px;
+  transition: border-color 0.25s ease;
 }
 
 .review-form input:focus,
-.review-form select:focus,
 .review-form textarea:focus {
-  outline: none;
-  box-shadow: 0 0 15px rgba(51, 153, 255, 0.5);
+  border-color: #7ea9ff;
+  box-shadow: 0 0 10px #7ea9ff;
 }
 
-/* === SCROLLBAR === */
-::-webkit-scrollbar {
-  width: 8px;
+.review-form textarea {
+  resize: vertical;
+  min-height: 80px;
 }
-::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
+
+/* === SUBMIT BUTTON === */
+.review-form button {
+  width: max-content;
+  padding: 12px 28px;
+  font-weight: 700;
+  color: #142a82;
+  background: #b2c4ff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 0 15px #b2c4ff;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  align-self: flex-start;
 }
-::-webkit-scrollbar-thumb {
-  background-color: #3399ff;
-  border-radius: 10px;
+
+.review-form button:hover {
+  background: #142a82;
+  color: #b2c4ff;
+  box-shadow: 0 0 35px #142a82;
 }
 
 /* === MEDIA QUERIES === */
-@media (max-width: 768px) {
-  .product-screenshot {
+@media (max-width: 900px) {
+  .product-overview {
+    max-width: 90vw;
+    padding: 30px 15px;
+  }
+
+  .overview-content {
     max-width: 100%;
   }
-  .overview-content, .reviews-section {
-    padding: 0 10px;
+
+  .image-content {
+    max-width: 100%;
   }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
   h1, .highlight-title {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
+  }
+
+  .purchase-button {
+    padding: 12px 24px;
+    font-size: 1rem;
   }
 }
