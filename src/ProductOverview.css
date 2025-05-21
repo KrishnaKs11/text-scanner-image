@@ -1,21 +1,18 @@
 /* === RESET & BASE === */
 body {
   margin: 0;
-  font-family: 'Arial', sans-serif; /* Standard font */
-  color: #ffffff; /* White text for contrast */
+  font-family: 'Arial', sans-serif;
+  color: #ffffff;
   overflow-x: hidden;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-
-  /* Background image + overlay gradient for better text visibility + slow zoom/pan animation */
-  background: 
-    linear-gradient(to bottom right, rgba(26, 26, 26, 0.5), rgba(13, 13, 13, 0.5)), /* Increased transparency */
+  background:
+    linear-gradient(to bottom right, rgba(26, 26, 26, 0.5), rgba(13, 13, 13, 0.5)),
     url('./Assets/background.jpg') no-repeat center center fixed;
   background-size: cover;
   position: relative;
   animation: slowZoomPan 60s ease-in-out infinite alternate;
-  /* Add a subtle lightening overlay */
 }
 
 body::after {
@@ -23,8 +20,8 @@ body::after {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
   pointer-events: none;
-  background: rgba(255, 255, 255, 0.07); /* subtle white light */
-  mix-blend-mode: screen; /* makes the wallpaper lighter */
+  background: rgba(255, 255, 255, 0.07);
+  mix-blend-mode: screen;
   z-index: 0;
 }
 
@@ -47,6 +44,7 @@ main {
   flex: 1;
   position: relative;
   z-index: 2;
+  padding: 20px;
 }
 
 /* === PRODUCT OVERVIEW === */
@@ -55,10 +53,10 @@ main {
   flex-direction: column;
   align-items: center;
   padding: 40px 20px;
-  background: rgba(20, 20, 20, 0.5); /* more transparent */
-  border: 1px solid #3399ff; /* brighter blue */
+  background: rgba(20, 20, 20, 0.5);
+  border: 1px solid #3399ff;
   border-radius: 12px;
-  box-shadow: 0 0 30px rgba(51, 153, 255, 0.6); /* stronger glow */
+  box-shadow: 0 0 30px rgba(51, 153, 255, 0.6);
   position: relative;
   z-index: 3;
   transition: box-shadow 0.6s ease;
@@ -104,19 +102,17 @@ main {
 h1, .highlight-title {
   font-size: 3.5rem;
   font-weight: 700;
-color: #000000;
+  color: #000000;
   text-align: center;
   margin-bottom: 15px;
   letter-spacing: 2px;
   text-transform: uppercase;
-    text-shadow: 0 0 8px rgb(25 33 180 / 70%), 0 0 15px rgba(51, 153, 255, 0.5);
+  text-shadow: 0 0 8px rgba(25, 33, 180, 0.7), 0 0 15px rgba(51, 153, 255, 0.5);
   transition: text-shadow 0.6s ease;
 }
 
 h1:hover, .highlight-title:hover {
-  text-shadow: 
-    0 0 15px rgba(51, 153, 255, 1),
-    0 0 30px rgba(51, 153, 255, 0.8);
+  text-shadow: 0 0 15px rgba(51, 153, 255, 1), 0 0 30px rgba(51, 153, 255, 0.8);
 }
 
 /* === INTRO TEXT === */
@@ -124,7 +120,7 @@ h1:hover, .highlight-title:hover {
   font-size: 1.1rem;
   color: #d0d8e8;
   line-height: 1.5;
-  background: rgba(51, 153, 255, 0.12); /* more transparent blue */
+  background: rgba(51, 153, 255, 0.12);
   padding: 14px 16px;
   border-radius: 10px;
   backdrop-filter: blur(5px);
@@ -169,7 +165,7 @@ h1:hover, .highlight-title:hover {
 }
 
 .feature-card {
-  background: rgba(20, 20, 20, 0.4); /* increased transparency */
+  background: rgba(20, 20, 20, 0.4);
   border: 1px solid rgba(51, 153, 255, 0.4);
   border-radius: 12px;
   padding: 20px;
@@ -300,91 +296,30 @@ h1:hover, .highlight-title:hover {
 .review-form select:focus,
 .review-form textarea:focus {
   outline: none;
-  box-shadow: 0 0 15px #3399ff;
+  box-shadow: 0 0 15px rgba(51, 153, 255, 0.5);
 }
 
-.review-form button {
-  width: 100%;
-  padding: 14px;
-  font-size: 1.15rem;
-  font-weight: 700;
+/* === SCROLLBAR === */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+::-webkit-scrollbar-thumb {
   background-color: #3399ff;
-  color: #ffffff;
-  border: none;
   border-radius: 10px;
-  transition: 0.4s ease;
-  box-shadow: 0 0 25px rgba(51, 153, 255, 0.5);
-  cursor: pointer;
 }
 
-.review-form button:hover {
-  background-color: #1a75ff;
-  transform: translateY(-3px);
-  box-shadow: 0 0 40px rgba(51, 153, 255, 0.8);
-}
-
-/* === FOOTER === */
-footer {
-  background: #111;
-  padding: 22px 20px;
-  text-align: center;
-  color: #aaffdd;
-  font-size: 0.95rem;
-  box-shadow: 0 -2px 15px rgba(51, 153, 255, 0.07);
-  z-index: 5;
-  user-select: none;
-}
-
-/* === ZOOMED IMAGE OVERLAY === */
-.zoomed-image-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(13, 13, 13, 0.9);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  animation: fadeInZoom 0.4s ease forwards;
-}
-
-.zoomed-image-overlay img {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 18px;
-  box-shadow: 0 0 40px rgba(51, 153, 255, 0.9);
-  filter: drop-shadow(0 0 10px rgba(51, 153, 255, 1));
-}
-
-@keyframes fadeInZoom {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
+/* === MEDIA QUERIES === */
+@media (max-width: 768px) {
+  .product-screenshot {
+    max-width: 100%;
   }
-  to {
-    opacity: 1;
-    transform: scale(1);
+  .overview-content, .reviews-section {
+    padding: 0 10px;
   }
-}
-
-/* === RESPONSIVE === */
-@media (max-width: 720px) {
-  .product-overview {
-    padding: 28px 15px;
-  }
-
-  .image-content {
-    max-width: 95%;
-  }
-
   h1, .highlight-title {
-    font-size: 2.5rem;
-  }
-
-  .features-grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
+    font-size: 2.2rem;
   }
 }
