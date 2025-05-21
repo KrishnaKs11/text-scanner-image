@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './ProductOverview.css';
 import productScreenshot from './Assets/FraudExposer.png';
-import aiGraphic from './Assets/AIFraudGraphic.jpg'; // <-- New image added
+import aiGraphic from './Assets/AIFraudGraphic.jpg'; // Existing image
+import graphImage from './Assets/graphimg.jpg'; // <-- New image added here
 import PurchaseButton from './PurchaseButton';
 import TextSlider from './TextSlider';
 import VideoPlayer from './VideoPlayer';
@@ -65,13 +66,21 @@ const ProductOverview = () => {
     <div className="product-overview">
       <div className="overview-content">
         <div className="text-content">
-         <h1>InterviewGuard AI — Advanced AI Interview Fraud Detection</h1>
-<img
-  src={aiGraphic}
-  alt="InterviewGuard AI Glow"
-  className="glow-image"
-/>
+          <h1>InterviewGuard AI — Advanced AI Interview Fraud Detection</h1>
 
+          {/* Wrap both images in scroll container */}
+          <div className="image-scroll-container">
+            <img
+              src={graphImage}
+              alt="InterviewGuard AI Graph"
+              className="graph-image"
+            />
+            <img
+              src={aiGraphic}
+              alt="InterviewGuard AI Glow"
+              className="glow-image"
+            />
+          </div>
 
           <p className="intro-text">
             Protect your hiring process with InterviewGuard AI’s real-time fraud detection and behavioral analytics.
