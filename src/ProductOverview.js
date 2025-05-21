@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './ProductOverview.css';
 import productScreenshot from './Assets/FraudExposer.png';
+import aiGraphic from './Assets/AIFraudGraphic.jpg'; // <-- New image added
 import PurchaseButton from './PurchaseButton';
 import TextSlider from './TextSlider';
-import VideoPlayer from './VideoPlayer'; 
+import VideoPlayer from './VideoPlayer';
 
 const ProductOverview = () => {
   const [reviews, setReviews] = useState([
@@ -64,13 +65,21 @@ const ProductOverview = () => {
     <div className="product-overview">
       <div className="overview-content">
         <div className="text-content">
-          <h1>InterviewGuard AI — Advanced AI Interview Fraud Detection</h1>
+         <h1>InterviewGuard AI — Advanced AI Interview Fraud Detection</h1>
+<img
+  src={aiGraphic}
+  alt="InterviewGuard AI Glow"
+  className="glow-image"
+/>
+
+
           <p className="intro-text">
             Protect your hiring process with InterviewGuard AI’s real-time fraud detection and behavioral analytics.
           </p>
           <p className="intro-text">
             Detect and expose hidden AI overlays used by candidates during interviews, ensuring a fair and transparent recruitment process.
           </p>
+
           <div className="features-grid">
             {features.map((feature, index) => (
               <div key={index} className="feature-card">
@@ -83,6 +92,7 @@ const ProductOverview = () => {
             ))}
           </div>
         </div>
+
         <div className="image-content">
           <img
             src={productScreenshot}
@@ -94,9 +104,11 @@ const ProductOverview = () => {
             <PurchaseButton />
           </div>
         </div>
+
         <div>
           <TextSlider />
         </div>
+
         <div className="video-player-container">
           <VideoPlayer />
         </div>
