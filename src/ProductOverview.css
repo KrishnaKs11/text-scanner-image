@@ -108,9 +108,7 @@ h1, .highlight-title {
   letter-spacing: 3px;
   text-transform: uppercase;
   text-shadow: 0 2px 4px rgba(13, 228, 189, 0.9);
-  text-shadow:
-    0 0 8px rgba(48, 48, 56, 0.7),
-    0 0 15px rgba(226, 229, 231, 0.5);
+    text-shadow: 0 0 8px rgb(255 255 255 / 70%), 0 0 15px rgba(226, 229, 231, 0.5);
 
   position: relative;
   display: inline-block;
