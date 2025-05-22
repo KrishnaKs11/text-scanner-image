@@ -18,7 +18,7 @@
   /* Add background image */
   background-image: url('./Assets/cyber-security-concept-digital-art.jpg'); /* Update the path */
   background-size: cover; /* Cover the entire header */
-  background-position: center 25%; /* Shift the image down by 20% */
+  background-position: center 35%; /* Shift the image down by 20% */
   background-repeat: no-repeat; /* Do not repeat the image */
 }
 
@@ -35,20 +35,24 @@
 }
 
 .logo img {
-  border-radius: 50%;
-  max-height: 112px;
-  width: auto;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    border-radius: 22%;
+    background: rgba(210, 210, 228, 0.3); /* Optional soft background */
+    max-height: 112px;
+    width: auto;
+    filter: brightness(1.1) sepia(0.2) hue-rotate(180deg) saturate(1.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
 }
 
+
+
 .logo img:hover {
-  transform: scale(1.15) rotate(5deg);
-  box-shadow: 0 6px 20px rgba(255, 204, 0, 0.5);
+  transform: scale(1.15) ;
+  box-shadow: 0 6px 20px ;
   filter: brightness(1.2);
 }
 
 .header:hover .logo img {
-  transform: scale(1.4) rotate(5deg);
+  transform: scale(1.4);
 }
 
 /* Navigation */
