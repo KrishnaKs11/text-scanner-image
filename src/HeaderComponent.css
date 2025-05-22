@@ -18,7 +18,7 @@
   /* Add background image */
   background-image: url('./Assets/cyber-security-concept-digital-art.jpg'); /* Update the path */
   background-size: cover; /* Cover the entire header */
-  background-position: center; /* Center the image */
+  background-position: center 25%; /* Shift the image down by 20% */
   background-repeat: no-repeat; /* Do not repeat the image */
 }
 
