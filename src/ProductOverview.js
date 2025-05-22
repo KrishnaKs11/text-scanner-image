@@ -117,7 +117,7 @@ const ProductOverview = () => {
                 <img
                   key={idx}
                   src={img}
-                  alt={`InterviewGuard AI image ${idx}`}
+                  alt={`InterviewGuard AI ${idx}`}
                   className={`${baseClass} ${isSelected ? 'selected-image' : 'not-selected-image'}`}
                   onClick={() => {
                     if (selectedImage === idx) {
