@@ -7,13 +7,18 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background:
-    linear-gradient(to bottom right, rgba(26, 26, 26, 0.5), rgba(13, 13, 13, 0.5)),
-    url('./Assets/background.jpg') no-repeat center center fixed;
-  background-size: cover;
-  position: relative;
-  animation: slowZoomPan 60s ease-in-out infinite alternate;
+
+  /* Add background image */
+  background-image: url('./Assets/cyber-security-concept-digital-art.jpg'); /* Update the path */
+  background-size: cover; /* Cover entire viewport */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent image tiling */
+
+  /* Optional: add overlay effect if needed to keep text readable */
+  background-color: rgba(0, 0, 0, 0.5); /* dark overlay */
+  background-blend-mode: overlay;
 }
+
 
 body::after {
   content: '';
@@ -108,7 +113,7 @@ h1,
   letter-spacing: 3px;
   text-transform: uppercase;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
-  text-shadow: 0 0 8px rgb(255 255 255 / 70%), 0 0 15px rgba(4, 49, 80, 0.5);
+  text-shadow: 0 0 8px rgb(255 255, 255 / 70%), 0 0 15px rgba(4, 49, 80, 0.5);
   position: relative;
   display: inline-block;
   overflow: hidden;
@@ -127,26 +132,19 @@ h1::after,
   width: 130px;
 
   background-image: url('./Assets/lock.png');
-  /* Swap if needed */
   background-repeat: no-repeat;
   background-size: 120%;
-  /* zoom in a bit */
   background-position: center;
 
   opacity: 0.3;
-  /* little transparent */
   border-radius: 50%;
-
-  /* Double dark blue circular border */
   border: 2px solid #0b1e61;
-  /* dark blue */
   box-shadow:
     0 0 10px 2px rgba(25, 33, 180, 0.3),
     0 0 20px 4px rgba(51, 153, 255, 0.2),
     0 0 0 3px #0b1e61,
     0 0 0 5px #142a82;
 
-  /* Keep image straight */
   transform: translateY(-50%);
   transform-style: flat;
   backface-visibility: hidden;
@@ -156,7 +154,6 @@ h1::after,
   pointer-events: none;
 
   z-index: 0;
-  /* behind text */
 }
 
 @keyframes glowSweep {
@@ -422,7 +419,6 @@ h1::after,
 }
 
 @media (max-width: 600px) {
-
   h1,
   .highlight-title {
     font-size: 2.5rem;
@@ -432,74 +428,122 @@ h1::after,
     padding: 12px 24px;
     font-size: 1rem;
   }
+
+  .image-scroll-container {
+    margin: 10px;
+        display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: auto;
+    gap: 50px;
+    padding: 10px 21px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    height: 350px;
+    gap: 20px; /* Reduced gap for mobile */
+    padding: 10px 10px; /* Adjusted padding */
+  }
+
+  .image-scroll-container img {
+   margin: 0px -80px;
+    width: 100%; /* Make images responsive */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 300px; /* Limit max width */
+  }
 }
 
-.glow-image {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  margin: 20px auto;
-  border-radius: 12px;
-  box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.glow-image:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 35px rgba(0, 255, 255, 0.8);
-}
-
-.graph-image {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  margin: 20px auto;
-  border-radius: 12px;
-  box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.graph-image:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 35px rgba(0, 255, 255, 0.8);
-}
-
-/* Container for horizontal scroll of images */
 .image-scroll-container {
   display: flex;
+  justify-content: center;
+  align-items: center;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
+  gap: 50px;
+  padding: 10px 21px;
+  scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-  padding: 10px 0;
-  gap: 16px;
-  margin-bottom: 20px;
+  height: 350px;
 }
 
 .image-scroll-container::-webkit-scrollbar {
   height: 8px;
 }
 
-.image-scroll-container::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.3);
+.image-scroll-container::-webkit-scrollbar-track {
+  background: rgba(51, 153, 255, 0.1);
   border-radius: 4px;
 }
 
-/* Netflix-style smaller images */
+.image-scroll-container::-webkit-scrollbar-thumb {
+  background: rgba(51, 153, 255, 0.5);
+  border-radius: 4px;
+}
+
+.image-scroll-container img {
+  flex-shrink: 0;
+  border-radius: 16px;
+  box-shadow: 0 0 15px rgba(51, 153, 255, 0.4);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 370px;
+  height: 230px;
+  margin: 0px -72px;
+  position: relative; /* Ensure z-index works */
+}
+
+
+.image-scroll-container img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px rgba(51, 153, 255, 0.8);
+}
+
+/* Base images */
 .glow-image,
 .graph-image {
   flex: 0 0 auto;
-  width: 380px;
-  /* slightly smaller */
+  width: 310px;
   height: 225px;
   border-radius: 8px;
   scroll-snap-align: start;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  display: block;
+  margin: 0 8px; /* small horizontal margin */
+  position: relative; /* for z-index manipulation */
+  user-select: none;
 }
 
-.glow-image:hover,
-.graph-image:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+/* Other images fade out when zoomed */
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+/* Zoomed image */
+.zoomed {
+  position: absolute; /* absolute inside container */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.3); /* center & scale */
+  z-index: 20;
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.8);
+  cursor: zoom-out;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  border-radius: 12px;
+  user-select: none;
+}
+
+/* Disable pointer events & cursor on others when zoom active */
+.image-scroll-container.zoom-active .glow-image:not(.zoomed),
+.image-scroll-container.zoom-active .graph-image:not(.zoomed) {
+  cursor: default;
+}
+
+/* Disable hover effect during zoom */
+.image-scroll-container.zoom-active .glow-image:hover,
+.image-scroll-container.zoom-active .graph-image:hover {
+  transform: none !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+  cursor: default !important;
 }
