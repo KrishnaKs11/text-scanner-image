@@ -143,18 +143,18 @@ const ProductOverview = () => {
               );
             })}
           </div>
-     <div className="trusted-by-container">
-      <h3>🔒 Trusted by Leading IT Security Companies Using AI-Based Fraud Detection</h3>
-      <div className="logos-row">
-        {companies.map((company) => (
-          <div key={company.name} className="company-card">
-            <img src={company.logo} alt={company.name} className="company-logo" />
-            <h4>{company.name}</h4>
-            <p>{company.description}</p>
+          <div className="trusted-by-container">
+            <h3>🔒 Trusted by Leading IT Security Companies Using AI-Based Fraud Detection</h3>
+            <div className="logos-row">
+              {companies.map((company) => (
+                <div key={company.name} className="company-card">
+                  <img src={company.logo} alt={company.name} className="company-logo" />
+                  <h4>{company.name}</h4>
+                  <p>{company.description}</p>
+                </div>
+              ))}
+            </div>
           </div>
-        ))}
-      </div>
-    </div>
 
           <p className="intro-text">
             Protect your hiring process with InterviewGuard AI’s real-time fraud detection and behavioral analytics.
@@ -162,6 +162,9 @@ const ProductOverview = () => {
           <p className="intro-text">
             Detect and expose hidden AI overlays used by candidates during interviews, ensuring a fair and transparent recruitment process.
           </p>
+          <p className="intro-text">
+            Works ONLY on winodows 11 OS.      
+       </p>
 
           <div className="features-grid">
             {features.map((feature, index) => (
