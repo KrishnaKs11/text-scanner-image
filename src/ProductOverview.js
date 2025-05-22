@@ -4,6 +4,8 @@ import './ProductOverview.css';
 import productScreenshot from './Assets/FraudExposer.png';
 import aiGraphic from './Assets/AIFraudGraphic.jpg';
 import graphImage from './Assets/graphimg.jpg';
+import DifferentiaConsulting from "./Assets/logouse1.png";
+import HARMAN_International from "./Assets/logouse2.png";
 
 import PurchaseButton from './PurchaseButton';
 import TextSlider from './TextSlider';
@@ -12,6 +14,11 @@ import VideoPlayer from './VideoPlayer';
 const ProductOverview = () => {
   const [selectedImage, setSelectedImage] = useState(null); // null = no zoom
   const [isZoomed, setIsZoomed] = useState(false);
+  const companies = [
+    { name: "Differentia Consulting", logo: DifferentiaConsulting },
+    { name: "HARMAN International", logo: HARMAN_International }
+  ];
+
 
   // Reviews state & form handlers
   const [reviews, setReviews] = useState([
@@ -136,7 +143,18 @@ const ProductOverview = () => {
               );
             })}
           </div>
-
+     <div className="trusted-by-container">
+      <h3>🔒 Trusted by Leading IT Security Companies Using AI-Based Fraud Detection</h3>
+      <div className="logos-row">
+        {companies.map((company) => (
+          <div key={company.name} className="company-card">
+            <img src={company.logo} alt={company.name} className="company-logo" />
+            <h4>{company.name}</h4>
+            <p>{company.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
 
           <p className="intro-text">
             Protect your hiring process with InterviewGuard AI’s real-time fraud detection and behavioral analytics.
