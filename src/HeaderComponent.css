@@ -14,12 +14,19 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   border-radius: 5px;
+  
+  /* Add background image */
+  background-image: url('./Assets/cyber-security-concept-digital-art.jpg'); /* Update the path */
+  background-size: cover; /* Cover the entire header */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
 }
 
 .header:hover {
   transform: translateY(-15px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
 }
+
 
 /* Logo */
 .logo {

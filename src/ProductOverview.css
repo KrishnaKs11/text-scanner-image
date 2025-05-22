@@ -7,7 +7,18 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+
+  /* Add background image */
+  background-image: url('./Assets/cyber-security-concept-digital-art.jpg'); /* Update the path */
+  background-size: cover; /* Cover entire viewport */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent image tiling */
+
+  /* Optional: add overlay effect if needed to keep text readable */
+  background-color: rgba(0, 0, 0, 0.5); /* dark overlay */
+  background-blend-mode: overlay;
 }
+
 
 body::after {
   content: '';
