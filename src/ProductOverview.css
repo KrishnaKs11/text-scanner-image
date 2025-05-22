@@ -97,7 +97,7 @@ main {
   justify-content: center;
   gap: 20px;
   width: 100%;
-  max-width: 900px;
+  max-width: 1200px;
   z-index: 4;
   text-align: center;
 }
@@ -546,4 +546,58 @@ h1::after,
   transform: none !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
   cursor: default !important;
+}
+
+
+.trusted-by-container {
+  text-align: center;
+  padding: 30px 20px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  margin-top: 40px;
+}
+
+.trusted-by-container h3 {
+  font-size: 1.6rem;
+  margin-bottom: 30px;
+  color: #222;
+}
+
+.logos-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.company-card {
+  max-width: 260px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgb(0 0 0 / 0.1);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.company-card:hover {
+  transform: translateY(-5px);
+}
+
+.company-logo {
+  height: 50px;
+  margin-bottom: 15px;
+  object-fit: contain;
+}
+
+.company-card h4 {
+  margin: 10px 0 8px;
+  font-weight: 600;
+  color: #333;
+}
+
+.company-card p {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.4;
 }
