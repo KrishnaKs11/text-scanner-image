@@ -7,7 +7,6 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-
 }
 
 body::after {
@@ -103,7 +102,7 @@ h1,
   letter-spacing: 3px;
   text-transform: uppercase;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
-  text-shadow: 0 0 8px rgb(255 255 255 / 70%), 0 0 15px rgba(4, 49, 80, 0.5);
+  text-shadow: 0 0 8px rgb(255 255, 255 / 70%), 0 0 15px rgba(4, 49, 80, 0.5);
   position: relative;
   display: inline-block;
   overflow: hidden;
@@ -122,26 +121,19 @@ h1::after,
   width: 130px;
 
   background-image: url('./Assets/lock.png');
-  /* Swap if needed */
   background-repeat: no-repeat;
   background-size: 120%;
-  /* zoom in a bit */
   background-position: center;
 
   opacity: 0.3;
-  /* little transparent */
   border-radius: 50%;
-
-  /* Double dark blue circular border */
   border: 2px solid #0b1e61;
-  /* dark blue */
   box-shadow:
     0 0 10px 2px rgba(25, 33, 180, 0.3),
     0 0 20px 4px rgba(51, 153, 255, 0.2),
     0 0 0 3px #0b1e61,
     0 0 0 5px #142a82;
 
-  /* Keep image straight */
   transform: translateY(-50%);
   transform-style: flat;
   backface-visibility: hidden;
@@ -151,7 +143,6 @@ h1::after,
   pointer-events: none;
 
   z-index: 0;
-  /* behind text */
 }
 
 @keyframes glowSweep {
@@ -417,7 +408,6 @@ h1::after,
 }
 
 @media (max-width: 600px) {
-
   h1,
   .highlight-title {
     font-size: 2.5rem;
@@ -427,9 +417,10 @@ h1::after,
     padding: 12px 24px;
     font-size: 1rem;
   }
-}
-.image-scroll-container {
-    display: flex;
+
+  .image-scroll-container {
+    margin: 10px;
+        display: flex;
     justify-content: center;
     align-items: center;
     overflow-x: auto;
@@ -438,6 +429,28 @@ h1::after,
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     height: 350px;
+    gap: 20px; /* Reduced gap for mobile */
+    padding: 10px 10px; /* Adjusted padding */
+  }
+
+  .image-scroll-container img {
+   margin: 0px -80px;
+    width: 100%; /* Make images responsive */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 300px; /* Limit max width */
+  }
+}
+
+.image-scroll-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: auto;
+  gap: 50px;
+  padding: 10px 21px;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  height: 350px;
 }
 
 .image-scroll-container::-webkit-scrollbar {
@@ -455,14 +468,17 @@ h1::after,
 }
 
 .image-scroll-container img {
-    flex-shrink: 0;
-    border-radius: 16px;
-    box-shadow: 0 0 15px rgba(51, 153, 255, 0.4);
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 370px;
-    height: 230px;
+  flex-shrink: 0;
+  border-radius: 16px;
+  box-shadow: 0 0 15px rgba(51, 153, 255, 0.4);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 370px;
+  height: 230px;
+  margin: 0px -72px;
+  position: relative; /* Ensure z-index works */
 }
+
 
 .image-scroll-container img:hover {
   transform: scale(1.05);
@@ -520,5 +536,3 @@ h1::after,
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
   cursor: default !important;
 }
-
-

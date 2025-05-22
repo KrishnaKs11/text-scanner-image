@@ -130,11 +130,13 @@ const ProductOverview = () => {
                     transform: isSelected ? 'scale(1.2)' : 'scale(1)',
                     transition: 'transform 0.3s ease',
                     cursor: 'pointer',
+                    zIndex: isSelected ? 10 : 1, // Adjust z-index based on selection
                   }}
                 />
               );
             })}
           </div>
+
 
           <p className="intro-text">
             Protect your hiring process with InterviewGuard AI’s real-time fraud detection and behavioral analytics.
